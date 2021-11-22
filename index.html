@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="style.css">
   
     <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
-    
+    <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
+
     <script src="js/pie-chart.js" defer type="module"></script>
+    <script src="js/artwork-chart.js" defer></script>
+
 </head>
 <body>
 
@@ -73,6 +76,10 @@
     <!--SECTION: Gallery/Artwork Overview-->
     <section id = "gallery">
         <h2>Explore the Collection</h2>
+        <div class="artwork-chart">
+            <div id="artwork-tooltip"></div>
+        </div>
+        <div class="detail"></div>
     </section>
 
     <!--SECTION: Artist Quiz-->
