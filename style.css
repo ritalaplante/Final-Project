@@ -142,12 +142,14 @@ h2{
 
   #artwork-tooltip{
     position: fixed;
-    opacity: 1;
+    display: inline;
+    opacity: 0;
 	z-index: 999;
     
     color: black;
-    width: 200px;
+    width: 300px;
     padding: 5px;
     border-radius:5px;
-    border: black 1px soild;
+   background-color: whitesmoke;
+   border: wheat 1px solid;
   }
