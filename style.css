@@ -125,3 +125,31 @@ h2{
     margin-right: auto;
     width: 50%;
   }
+
+  #origins{
+      
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  
+  }
+
+ #op{
+     margin-left: 100px;
+      font-size: 20px;
+  }
+
+  #artwork-tooltip{
+    position: fixed;
+    display: inline;
+    opacity: 0;
+	z-index: 999;
+    
+    color: black;
+    width: 300px;
+    padding: 5px;
+    border-radius:5px;
+   background-color: whitesmoke;
+   border: wheat 1px solid;
+  }

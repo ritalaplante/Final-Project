@@ -1,11 +1,11 @@
 
  
-d3.csv('../data/female_artists_artwork.csv',d3.autoType).then(data=>{
+d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
+//test with smaller dataset
+    let artwork_data=data.slice(0,500)
+  
 
-    let artwork_data=data
-    console.log(artwork_data)
-
-const margin = {left:150,right:20, top:20, bottom:40};
+const margin = {left:150,right:20, top:50, bottom:40};
 
   const outerWidth = 1500;
   const outerHeight = 3000;
@@ -18,10 +18,6 @@ const margin = {left:150,right:20, top:20, bottom:40};
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    var idlist = [];
-for (var i = 0; i <= 40; i++) {
-    idlist.push(i);
-}
 
 
 const years = Array.from(new Set(artwork_data.map(d=>d.year)));
@@ -40,11 +36,28 @@ acyears.sort();
     .domain(years)
     .range([0, height]);
 
-const xAxis = d3.axisBottom(xScale)
+    g.append('text')
+    .attr('x',1350)
+    .attr('y',40)
+.text('Year the artwork was created')
+
+g.append('text')
+.attr('x',50)
+.attr('y',-20)
+.text('Year the artwork was acquired by the museum')
+
+g.append('text')
+.attr('x',10)
+.attr('y',2900)
+.text('These artworks lack records')
+
+
+const xAxis = d3.axisTop(xScale)
+.tickValues(xScale.domain().filter(function(d,i){ 
+  return !(i%3)
+}));
 const yAxis = d3.axisLeft(yScale);
 
-console.log(xScale.bandwidth())
-console.log(yScale.bandwidth())
   g.selectAll("image")
   .data(artwork_data)
   .enter()
@@ -58,17 +71,27 @@ console.log(yScale.bandwidth())
   .attr('preserveAspectRatio','none')
   .attr("xlink:href",d=>d.thumbnailUrl)
   .on("mouseover",function(event,d){
-    const pos = d3.pointer(event, window);
-    d3.select('#artwork-tooltip')
-        .style("left", pos[0]+20 + "px")
-                    .style("top", pos[1]+10 + "px")
-                    .style("opacity", 0.7)
-                    .html(
-                        "title"+d.title
+
+    const[x, y] = d3.pointer(event);
+    d3.select("#artwork-tooltip")
+        .style("left", x-10 + "px")
+        .style("top", y  + "px")
+        .style("opacity",1)
+        .html(
+                    "Title: "+d.title + "<br>"+
+                        "Artist: "+d.artist +"<br>"+
+                        "Year created: "+d.year+"<br>"+
+                        "Year acquired: "+d.acquisitionYear+
+                        '<div>' +
+                         "<img src=" +d.thumbnailUrl+ " + width:300px >" +
+                         '</div>'
                     )
+
+        console.log(x,y)
+      
   })
   .on("mouseleave",function(d){
-    d3.select("#artwork-tooltip").style("opacity", 0);	
+    d3.select("#artwork-tooltip").style('opacity', 0);
 })
   .on('click',function(event,d,i){
       
@@ -80,7 +103,7 @@ console.log(yScale.bandwidth())
 
 g.append("g")
   .attr("class", "x-axis")
-  .attr("transform", `translate(0, ${height})`)
+  //.attr("transform", `translate(0, ${height})`)
   .call(xAxis);
 
 g.append("g")
