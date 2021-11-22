@@ -1,4 +1,4 @@
-const margin = {top:50, left:50, right:50, bottom:50};
+const margin = {top:50, left:60, right:50, bottom:50};
 const width = 650 - margin.left - margin.right;
 const height = 450 - margin.top - margin.bottom;
 
@@ -68,7 +68,6 @@ function update(data) {
         d.artwork_count = parseInt(d.artwork_count);
     });
 
-    
     console.log(data)
     // Update domains and scales using data passed to update
 
@@ -103,7 +102,7 @@ function update(data) {
         .attr("d", line)
         .attr("fill", "none")
         .attr("stroke", "#67000d")
-        .attr("stroke-width", 2.5)
+        .attr("stroke-width", 1.5)
 
     // Update axes using update scales
     svg.select(".x-axis")
