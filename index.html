@@ -11,6 +11,7 @@
     <script src="js/pie-chart.js" defer type="module"></script>
     <script src="js/artwork-chart.js" defer type="module"></script>
     <script src = "js/area-chart.js" defer type="module"></script>
+    <script src = "js/artist-origins.js" defer type="module"></script>
 
 </head>
 <body>
@@ -80,6 +81,11 @@
 
     </section>
 
+    <section id='artist-origin'></section>
+    <h2>Where the artists were born</h2>
+    <p id='op'>Here is a chart that shows the birthplace of female artists</p>
+    <img id='origins' src="images/origins.png" >
+
     <!--SECTION: Top 10 Female Artists-->
     <section id = "artists">
         <h2>Meet Popular Artists</h2>
@@ -89,8 +95,8 @@
     <!--SECTION: Gallery/Artwork Overview-->
     <section id = "gallery">
         <h2>Explore the Collection</h2>
+        <div id="artwork-tooltip"></div>
         <div class="artwork-chart">
-            <div id="artwork-tooltip"></div>
         </div>
         <div class="detail"></div>
     </section>

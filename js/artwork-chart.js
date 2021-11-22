@@ -1,9 +1,9 @@
 
  
-d3.csv('../data/female_artists_artwork.csv',d3.autoType).then(data=>{
-
-    let artwork_data=data
-    console.log(artwork_data)
+d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
+//test with smaller dataset
+    let artwork_data=data.slice(0,500)
+  
 
 const margin = {left:150,right:20, top:20, bottom:40};
 
@@ -18,10 +18,6 @@ const margin = {left:150,right:20, top:20, bottom:40};
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    var idlist = [];
-for (var i = 0; i <= 40; i++) {
-    idlist.push(i);
-}
 
 
 const years = Array.from(new Set(artwork_data.map(d=>d.year)));
@@ -41,6 +37,9 @@ acyears.sort();
     .range([0, height]);
 
 const xAxis = d3.axisBottom(xScale)
+.tickValues(xScale.domain().filter(function(d,i){ 
+  return !(i%3)
+}));
 const yAxis = d3.axisLeft(yScale);
 
 console.log(xScale.bandwidth())
@@ -59,16 +58,19 @@ console.log(yScale.bandwidth())
   .attr("xlink:href",d=>d.thumbnailUrl)
   .on("mouseover",function(event,d){
     const pos = d3.pointer(event, window);
+    console.log(pos)
     d3.select('#artwork-tooltip')
         .style("left", pos[0]+20 + "px")
-                    .style("top", pos[1]+10 + "px")
-                    .style("opacity", 0.7)
-                    .html(
-                        "title"+d.title
+        .style("top", pos[1]+10 + "px")
+        .style("opacity",1)
+        .html(
+                    "title: "+d.title + "<br>"+
+                        "artist: "+d.artist +
+                        '<div> </div>'
                     )
   })
   .on("mouseleave",function(d){
-    d3.select("#artwork-tooltip").style("opacity", 0);	
+    d3.select("#artwork-tooltip").style("opacity", 0.3);	
 })
   .on('click',function(event,d,i){
       
