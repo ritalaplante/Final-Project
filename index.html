@@ -9,7 +9,11 @@
     <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
 
     <script src="js/pie-chart.js" defer type="module"></script>
+<<<<<<< HEAD
     <script src="js/artwork-chart.js" defer></script>
+=======
+    <script src = "js/area-chart.js" defer type="module"></script>
+>>>>>>> 86c01c9d497f95a987772a0ac7ced0b62a616196
 
 </head>
 <body>
@@ -60,9 +64,20 @@
         <div class = "container">
             <div class = "row">
                 <div class = "column" id = "vis-description">
-                    <p></p>
+                    <p>
+                        Here we see that a majority of the artwork in the TATE gallery created by female artists was both finished 
+                        and acquired from the late 20th century onward. This visualization shows how women have been under represented 
+                        in the art space compared to their male counterparts. Even today as the TATE continues to acquire more artwork
+                        created by female artists, women are still under represented in the gallery. 
+                    </p>
                 </div>
-                <div class = "column" id = "map"></div>
+                <div class = "column">
+                    <select id="group-by">
+                        <option value="year">Year Created</option>
+                        <option value="acquisition">Year of Acquisition</option>
+                    </select>
+                    <div class = "chart"></div>
+                </div>
             </div> 
         </div>
 
@@ -71,6 +86,7 @@
     <!--SECTION: Top 10 Female Artists-->
     <section id = "artists">
         <h2>Meet Popular Artists</h2>
+        <img src="images/topTen.jpeg" width= 700px, height= auto, class="center">
     </section>
 
     <!--SECTION: Gallery/Artwork Overview-->
