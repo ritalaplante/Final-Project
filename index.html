@@ -1,12 +1,13 @@
 <head>
     <meta charset="utf-8">
     <title>Final Project</title>
-  
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
   
     <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
     
-    <script src="main.js" defer type="module"></script>
+    <script src="js/pie-chart.js" defer type="module"></script>
 </head>
 <body>
 
@@ -35,22 +36,48 @@
 
     <!--SECTION: Highlights and Overview-->
     <section id = "highlights">
-        <h2>Highlights/Overview</h2>
-        <div class = "row">
-            <div class = "column" id = "pie-chart">
+        <h2>Highlights and Overview</h2>
 
-            </div>
-            <div class = "column" id = "vis-description">
-
-            </div>
+        <!--Pie chart artist genders-->
+        <div class = "container">
+            <div class = "row">
+                <div class = "column" id = "pie-chart"></div>
+                <div class = "column" id = "vis-description">
+                    <p>
+                        Like most art collections around the world, a majority of the TATE collection is 
+                        composed of male artists. To better understand why this gender inbalance is happening, 
+                        we wish to know more about the few female artists in this collection. Where are they from?
+                        When did they live? When did they create the artwork that hangs in the TATE galleries today?
+                        Perhaps answering these questions can help understand why so few women are represented in these
+                        galleries and shed light on the diverse perspectives female artists bring to the table. 
+                    </p>
+                </div>
+            </div> 
+        </div>
+        <div class = "container">
+            <div class = "row">
+                <div class = "column" id = "vis-description">
+                    <p></p>
+                </div>
+                <div class = "column" id = "map"></div>
+            </div> 
         </div>
 
     </section>
 
     <!--SECTION: Top 10 Female Artists-->
+    <section id = "artists">
+        <h2>Meet Popular Artists</h2>
+    </section>
 
     <!--SECTION: Gallery/Artwork Overview-->
+    <section id = "gallery">
+        <h2>Explore the Collection</h2>
+    </section>
 
     <!--SECTION: Artist Quiz-->
+    <section id = "quiz">
+        <h2>Test Your Knowledge</h2>
+    </section>
 
 </body>
