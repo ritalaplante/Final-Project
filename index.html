@@ -35,7 +35,7 @@
             <li><a href="#highlights">Highlights/Overview</a></li>
             <li><a href="#artists">Meet Popular Artists</a></li>
             <li><a href="#gallery">Explore the Collection</a></li>
-            <li><a href="#quiz">Test Your Knowledge</a></li>
+            <!--<li><a href="#quiz">Test Your Knowledge</a></li>-->
         </ul>
     </div>
 
@@ -84,9 +84,21 @@
     </section>
 
     <section id='artist-origin'></section>
-    <h2>Where the artists were born</h2>
-    <p id='op'>Here is a chart that shows the birthplace of female artists</p>
-    <img id='origins' src="images/origins.png" >
+    <div class = "container">
+        <div class = "row">
+            <div class = "column">
+                <img id='origins' src="images/origins.png">
+            </div>
+            <div class = "column" id = "vis-description">
+                <p>
+                    The following is a chart that shows where female artists in the collection were born. We intended to make a map;
+                    however, we are finding the task much more difficult than we originally intended since not all country names in 
+                    the dataset are listed in English. Instead, we created a preliminary tree map in Tableau, but would be open to 
+                    suggestions about how we could use the geographical data in our dataset.
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!--SECTION: Top 10 Female Artists-->
     <section id = "artists">
@@ -97,7 +109,7 @@
                 a more creative visualization that will require more time and styling. 
             </p>
         </div>
-        <img src="images/topTen.jpeg" width= 700px, height= auto, class="center">
+        <img src="images/topTen.jpeg" width= 700px height= auto class="center">
     </section>
 
     <!--SECTION: Gallery/Artwork Overview-->
@@ -111,9 +123,9 @@
         <div class="detail"></div>
     </section>
 
-    <!--SECTION: Artist Quiz-->
+    <!--SECTION: Artist Quiz
     <section id = "quiz">
         <h2>Test Your Knowledge</h2>
-    </section>
+    </section> -->
 
 </body>

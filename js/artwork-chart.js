@@ -7,7 +7,7 @@ d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
 
 const margin = {left:150,right:20, top:50, bottom:40};
 
-  const outerWidth = 1500;
+  const outerWidth = 1300;
   const outerHeight = 3000;
   const width = outerWidth - margin.left - margin.right;
   const height = outerHeight - margin.top - margin.bottom;
