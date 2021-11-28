@@ -153,3 +153,8 @@ h2{
    background-color: whitesmoke;
    border: wheat 1px solid;
   }
+
+#origins{
+    width: 500px;
+    height: 300px;
+}
