@@ -1,9 +1,78 @@
+// https://lokeshdhakar.com/projects/color-thief/
+  
+let googleProxyURL = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=';
+
+const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+  const hex = x.toString(16)
+  return hex.length === 1 ? '0' + hex : hex
+}).join('')
+
+//  function loadimg(imageURL,img){
+//   return new Promise((resolve, reject) => {
+//     img.src=googleProxyURL+imageURL;
+//     img.onload = () => resolve(img)
+//     img.onerror = reject;
+//   })
+ 
+// }
+
+d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
+  const colorThief = new ColorThief();
+  console.log(data.length)
+  let artwork_data=data.slice(0,500)
+
+  
+   
+    artwork_data.forEach(element => {
+      let imageURL = element.thumbnailUrl
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src=googleProxyURL+imageURL;
+      // const x=await loadimg(imageURL,img);
+      img.onload=function(){
+        var palette=colorThief.getPalette(img)
+        for(var i=0;i<palette.length;i++){
+          palette[i]=rgbToHex(palette[i][0],palette[i][1],palette[i][2])
+        }
+    
+        
+        var color=colorThief.getColor(img)
+        
+        color=rgbToHex(color[0],color[1],color[2])
+        element["color"]=color
+        element["palette"]=palette
+        
+      }
+    });
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+    sleep(5000).then(() => { 
+      
+      artwork_data.forEach(element => {
+        console.log(element["color"])
+      })
+
+      const keys = Object.keys(artwork_data[0]);
+      
+
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(artwork_data));
+      var dlAnchorElem = document.getElementById('a2');
+      dlAnchorElem.setAttribute("href",     dataStr     );
+      dlAnchorElem.setAttribute("download", "g4.json");
+      //dlAnchorElem.click();
+
+     });
+    
+      
+
+  
 
  
-d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
-//test with smaller dataset
-    let artwork_data=data.slice(0,500)
-  
+    
 
 const margin = {left:150,right:20, top:50, bottom:40};
 
@@ -87,8 +156,7 @@ const yAxis = d3.axisLeft(yScale);
                          '</div>'
                     )
 
-        console.log(x,y)
-      
+       
   })
   .on("mouseleave",function(d){
     d3.select("#artwork-tooltip").style('opacity', 0);
