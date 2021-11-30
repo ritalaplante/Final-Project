@@ -40,6 +40,14 @@ svg.append("g")
 svg.append("g")
     .attr("class", "axis y-axis")
 
+/*svg.append('line').classed('hoverLine', true)
+svg.append('circle').classed('hoverPoint', true)
+svg.append("text").classed('hoverText', true)
+
+svg.on('mousemove',function(event,d){
+    console.log(event)
+})*/
+
 const labelY = svg.append('text')
     .attr('x', -80)
     .attr('y', -40)
@@ -88,7 +96,7 @@ function update(data) {
         .transition()
         .duration(1000)
         .attr("d", area)
-        .attr("fill", "#feded0")
+        .attr("fill", "#2ea2cf")
         
     // Add a line to the area chart
     var line = d3.line()
@@ -101,7 +109,7 @@ function update(data) {
         .duration(1000)
         .attr("d", line)
         .attr("fill", "none")
-        .attr("stroke", "#67000d")
+        .attr("stroke", "#063792")
         .attr("stroke-width", 1.5)
 
     // Update axes using update scales
@@ -138,8 +146,8 @@ Promise.all([ // load multiple files
         return a.year - b.year;
     });
 
-    console.log("acquistion", acquistion);
-    console.log("artwork", artwork);
+    //console.log("acquistion", acquistion);
+    //console.log("artwork", artwork);
 
     update(artwork); 
 
@@ -153,3 +161,52 @@ Promise.all([ // load multiple files
             } 
         })
 });
+
+/*function mouseMove (){
+    //d3.event.preventDefault();
+    const mouse = d3.mouse(d3.event.target);
+    const [
+      xCoord,
+      yCoord,
+    ] = mouse;
+  
+    const mouseDate = xScale.invert(xCoord);
+    const mouseDateSnap = d3.timeYear.floor(mouseDate);
+    
+    if (xScale(mouseDateSnap) < margin.left ||
+       xScale(mouseDateSnap) > width - margin.right) {
+      return;
+    }
+    
+    const bisectDate = d3.bisector(d => d.date).right;
+    const xIndex = bisectDate(data, mouseDateSnap, 1);
+    const mousePopulation = data[xIndex].population;
+  
+    svg.selectAll('.hoverLine')
+      .attr('x1', xScale(mouseDateSnap))
+      .attr('y1', margin.top)
+      .attr('x2', xScale(mouseDateSnap))
+      .attr('y2', height - margin.bottom)
+      .attr('stroke', '#147F90')
+      .attr('fill', '#A6E8F2')
+    ;
+  
+    svg.selectAll('.hoverPoint')
+      .attr('cx', xScale(mouseDateSnap))
+      .attr('cy', yScale(mousePopulation))
+      .attr('r', '7')
+      .attr('fill', '#147F90')
+    ;
+    
+    const isLessThanHalf = xIndex > data.length / 2;
+    const hoverTextX = isLessThanHalf ? '-0.75em' : '0.75em';
+    const hoverTextAnchor = isLessThanHalf ? 'end' : 'start';
+  
+    svg.selectAll('.hoverText')
+      .attr('x', xScale(mouseDateSnap))
+      .attr('y', yScale(mousePopulation))
+      .attr('dx', hoverTextX)
+      .attr('dy', '-1.25em')
+      .style('text-anchor', hoverTextAnchor)
+      .text(d3.format('.5s')(mousePopulation));
+  };*/

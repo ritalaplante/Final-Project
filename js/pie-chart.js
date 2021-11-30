@@ -20,7 +20,7 @@ const data = {Unknown: 116, Male: 2895, Female: 521}
 
 // set the color scale
 const color = d3.scaleOrdinal()
-    .range(['#fdf0d5', '#669bbc', '#c1121f']); 
+    .range(['#2ea2cf', '#7ff9fd', '#063792']); 
     //white, blue, red
 
 // Compute the position of each group on the pie:
