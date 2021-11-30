@@ -77,6 +77,8 @@ h2{
     background-color: #e2e1dd;
 }
 
+
+
 #page-items{
     list-style:none;
     margin:0;
@@ -159,6 +161,7 @@ h2{
     height: 300px;
 }
 
+<<<<<<< HEAD
 #picker{
     margin-left: 50px;
     width: 100px;
@@ -183,3 +186,33 @@ h2{
     font-size: 20px;
     margin: 30px;
 }
+=======
+/*#pie-tooltip{
+    position: fixed;
+    display: inline;
+    opacity: 0;
+	z-index: 999;
+    
+    color: black;
+    width: 300px;
+    padding: 5px;
+    border-radius:5px;
+   background-color: whitesmoke;
+   border: wheat 1px solid;
+  }*/
+
+  #pie-tooltip{
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 whitesmoke;
+    border: wheat 1px solid;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+>>>>>>> 598ae3d2082fafdc859addc71a3e8225caba0e2f

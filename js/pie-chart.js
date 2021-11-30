@@ -3,6 +3,7 @@ const width = 375,
     height = 375,
     margin = 10;
 
+const format = d3.format(",");
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
 const radius = Math.min(width, height) / 2 - margin
 
@@ -15,7 +16,7 @@ const svg = d3.select("#pie-chart")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
 // Create dummy data
-const data = {unknown: 116, male: 2895, female: 521}
+const data = {Unknown: 116, Male: 2895, Female: 521}
 
 // set the color scale
 const color = d3.scaleOrdinal()
@@ -43,6 +44,19 @@ svg
     //.attr("stroke", "black")
     //.style("stroke-width", "2px")
     .style("opacity", 0.7)
+
+  .on("mousemove", function(event, d){
+    const pos = d3.pointer(event, window);
+    d3.select("#pie-tooltip")
+      .style("left", pos[0]+10+"px")
+      .style("top",pos[1]-25+"px")
+      .style("display", "inline-block")
+      .html("Gender: "+(d.data[0])+"<br>"+"Number of artists: "+(d.data[1]));
+    })
+  .on("mouseout", function(d){
+    d3.select("#pie-tooltip").style("display", "none");
+  });
+    
 
 // Now add the annotation. Use the centroid method to get the best coordinates
 /*svg
