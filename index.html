@@ -1,13 +1,29 @@
 <head>
-    <meta charset="utf-8">
-    <title>Final Project</title>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-  
-    <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
-    <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+  <meta charset="utf-8" />
+  <title>Final Project</title>
+
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  />
+
+  <!-- <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+  /> -->
+  <link rel="stylesheet" href="style.css" />
+
+
+  <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
     <script src="js/pie-chart.js" defer type="module"></script>
     <script src="js/artwork-chart.js" defer type="module"></script>
@@ -15,119 +31,173 @@
     <script src = "js/artist-origins.js" defer type="module"></script>
     
 
+  <script src="js/pie-chart.js" defer type="module"></script>
+  <script src="js/area-chart.js" defer type="module"></script>
+  <script src="js/artist-origins.js" defer type="module"></script>
+  <script src="js/color-picker.js" defer></script>
+  <script src="js/color-finder.js" defer></script>
+  <script src="js/scatterplot.js" defer type="module"></script>
+  <script src="js/collage.js" defer type="module"></script>
 </head>
 <body>
-    <a id="a2" download="file.csv">Download</a>
-    <div class = "header">
-        <div class = "header-text">
-            <h1>Refusing to HesiTATE: Female Artists in London's Leading Modern Museum</h1>
-            <p id="subtitle">Data Visualization by Rita, Kelly, and Amy</p>
-            <p id="description">
-                Who are the female artists represented in the TATE collection? This visualization
-                aims to explore the women behind the artwork in one of the world's most famous galleries.
-                Users have the opportunity to explore where these women come from, when they worked, and the 
-                mediums they used. Explore this site further to learn about these talented women and the art 
-                they devoted their lives to. 
-            </p>
+  <!-- <a id="a2" download="file.csv">Download</a> -->
+  <div class="header">
+    <div class="header-text">
+      <h1>
+        Refusing to HesiTATE: Female Artists in London's Leading Modern Museum
+      </h1>
+      <p id="subtitle">Data Visualization by Rita, Kelly, and Amy</p>
+      <p id="description">
+        Who are the female artists represented in the TATE collection? This
+        visualization aims to explore the women behind the artwork in one of the
+        world's most famous galleries. Users have the opportunity to explore
+        where these women come from, when they worked, and the mediums they
+        used. Explore this site further to learn about these talented women and
+        the art they devoted their lives to.
+      </p>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <ul id="page-items">
+      <li><a href="#highlights">Highlights/Overview</a></li>
+      <li><a href="#artists">Meet Popular Artists</a></li>
+      <li><a href="#gallery">Explore the Collection</a></li>
+      <!--<li><a href="#quiz">Test Your Knowledge</a></li>-->
+    </ul>
+  </div>
+
+  <!--SECTION: Highlights and Overview-->
+  <section id="highlights">
+    <h2>Highlights and Overview</h2>
+
+    <!--Pie chart artist genders-->
+    <div class="container">
+      <div class="row">
+        <div class="column" id="pie-chart">
+          <div id="pie-tooltip"></div>
         </div>
+        <div class="column" id="vis-description">
+          <p>
+            Like most art collections around the world, a majority of the TATE
+            collection is composed of male artists. To better understand why
+            this gender inbalance is happening, we wish to know more about the
+            few female artists in this collection. Where are they from? When did
+            they live? When did they create the artwork that hangs in the TATE
+            galleries today? Perhaps answering these questions can help
+            understand why so few women are represented in these galleries and
+            shed light on the diverse perspectives female artists bring to the
+            table.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="column" id="vis-description">
+          <p>
+            Here we see that a majority of the artwork in the TATE gallery
+            created by female artists was both finished and acquired from the
+            late 20th century onward. This visualization shows how women have
+            been under represented in the art space compared to their male
+            counterparts. Even today as the TATE continues to acquire more
+            artwork created by female artists, women are still under represented
+            in the gallery.
+          </p>
+        </div>
+        <div class="column">
+          <select id="group-by">
+            <option value="year">Year Created</option>
+            <option value="acquisition">Year of Acquisition</option>
+          </select>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- scatterplot -->
+  <section id="stats">
+      <p>Here is a scatter plot displaying size of the artworks.</p>
+      <p>Each circle represents an artwork, and its color is the primary color of the artwork</p>
+    <div class="scatterplot"></div>
+  </section>
+
+  <section id="artist-origin"></section>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <img id="origins" src="images/origins.png" />
+      </div>
+      <div class="column" id="vis-description">
+        <p>
+          The following is a chart that shows where female artists in the
+          collection were born. We intended to make a map; however, we are
+          finding the task much more difficult than we originally intended since
+          not all country names in the dataset are listed in English. Instead,
+          we created a preliminary tree map in Tableau, but would be open to
+          suggestions about how we could use the geographical data in our
+          dataset.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--SECTION: Top 10 Female Artists-->
+  <section id="artists">
+    <h2>Meet Popular Artists</h2>
+    <div class="container" id="vis-description">
+      <p>
+        Our final visualization is not yet complete, but this is a sketch. Here
+        we plan on incorporating a more creative visualization that will require
+        more time and styling.
+      </p>
+    </div>
+    <img src="images/topTen.jpeg" width="700px" height="auto" class="center" />
+  </section>
+
+  <!--SECTION: Gallery/Artwork Overview-->
+  <section id="gallery">
+    <h2>Explore the Collection</h2>
+    <p>Here is a collage of all artworks in the database</p>
+    <p> Click the images to visit details page</p>
+    <div class="collage">
+        <div id="artwork-tooltip"></div>
     </div>
 
-    <div class = "navigation">
-        <ul id = "page-items">
-            <li><a href="#highlights">Highlights/Overview</a></li>
-            <li><a href="#artists">Meet Popular Artists</a></li>
-            <li><a href="#gallery">Explore the Collection</a></li>
-            <!--<li><a href="#quiz">Test Your Knowledge</a></li>-->
-        </ul>
-    </div>
 
-    <!--SECTION: Highlights and Overview-->
-    <section id = "highlights">
-        <h2>Highlights and Overview</h2>
-
-        <!--Pie chart artist genders-->
-        <div class = "container">
-            <div class = "row">
-                <div class = "column" id = "pie-chart">
-                    <div id = "pie-tooltip"></div>
-                </div>
-                <div class = "column" id = "vis-description">
-                    <p>
-                        Like most art collections around the world, a majority of the TATE collection is 
-                        composed of male artists. To better understand why this gender inbalance is happening, 
-                        we wish to know more about the few female artists in this collection. Where are they from?
-                        When did they live? When did they create the artwork that hangs in the TATE galleries today?
-                        Perhaps answering these questions can help understand why so few women are represented in these
-                        galleries and shed light on the diverse perspectives female artists bring to the table. 
-                    </p>
-                </div>
-            </div> 
-        </div>
-        <div class = "container">
-            <div class = "row">
-                <div class = "column" id = "vis-description">
-                    <p>
-                        Here we see that a majority of the artwork in the TATE gallery created by female artists was both finished 
-                        and acquired from the late 20th century onward. This visualization shows how women have been under represented 
-                        in the art space compared to their male counterparts. Even today as the TATE continues to acquire more artwork
-                        created by female artists, women are still under represented in the gallery. 
-                    </p>
-                </div>
-                <div class = "column">
-                    <select id="group-by">
-                        <option value="year">Year Created</option>
-                        <option value="acquisition">Year of Acquisition</option>
-                    </select>
-                    <div class = "chart"></div>
-                </div>
-            </div> 
-        </div>
-
-    </section>
-
-    <section id='artist-origin'></section>
-    <div class = "container">
-        <div class = "row">
-            <div class = "column">
-                <img id='origins' src="images/origins.png">
-            </div>
-            <div class = "column" id = "vis-description">
-                <p>
-                    The following is a chart that shows where female artists in the collection were born. We intended to make a map;
-                    however, we are finding the task much more difficult than we originally intended since not all country names in 
-                    the dataset are listed in English. Instead, we created a preliminary tree map in Tableau, but would be open to 
-                    suggestions about how we could use the geographical data in our dataset.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!--SECTION: Top 10 Female Artists-->
-    <section id = "artists">
-        <h2>Meet Popular Artists</h2>
-        <div class = "container" id = "vis-description">
-            <p>
-                Our final visualization is not yet complete, but this is a sketch. Here we plan on incorporating
-                a more creative visualization that will require more time and styling. 
-            </p>
-        </div>
-        <img src="images/topTen.jpeg" width= 700px height= auto class="center">
-    </section>
-
-    <!--SECTION: Gallery/Artwork Overview-->
-    <section id = "gallery">
-        <h2>Explore the Collection</h2>
-        <p>Click the images to visit details page</p>
-        <div class="artwork-chart">
-            <div id="artwork-tooltip"></div>
-        </div>
+    <div class="color-picker">
+      <h2>Explore the artworks by color</h2>
+      <p>
+        Find a color and get the artwork that has the most similar primary color
+        <br> 
+        It also returns the palette of the image
+      </p>
+      <span>
+        <span>Pick a color: </span>
+        <input id="picker" type="color" value="#0000FF" />
+      </span>
+      <button class="button" id="check">Get Artwork</button>
+      <div class="row">
+          <div class="column column-40">
+            <div id="img-container" ></div>
+          </div>
+          <div class="column column-40">
+            <div id="primary-color" ></div>
+            <div id="palette" ></div>
+          </div>
         
-        <div class="detail"></div>
-    </section>
 
-    <!--SECTION: Artist Quiz
+      
+        
+   
+    
+      </div>
+    </div>
+  </section>
+
+  <!--SECTION: Artist Quiz
     <section id = "quiz">
         <h2>Test Your Knowledge</h2>
     </section> -->
-
 </body>
