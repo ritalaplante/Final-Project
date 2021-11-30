@@ -16,65 +16,57 @@ const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
  
 // }
 
-d3.csv('data/female_artists_artwork.csv',d3.autoType).then(data=>{
-  const colorThief = new ColorThief();
-  console.log(data.length)
+d3.json('data/artwork_color.json',d3.autoType).then(data=>{
+  //const colorThief = new ColorThief();
   let artwork_data=data.slice(0,500)
 
-  
-   
-    artwork_data.forEach(element => {
-      let imageURL = element.thumbnailUrl
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.src=googleProxyURL+imageURL;
-      // const x=await loadimg(imageURL,img);
-      img.onload=function(){
-        var palette=colorThief.getPalette(img)
-        for(var i=0;i<palette.length;i++){
-          palette[i]=rgbToHex(palette[i][0],palette[i][1],palette[i][2])
-        }
-    
-        
-        var color=colorThief.getColor(img)
-        
-        color=rgbToHex(color[0],color[1],color[2])
-        element["color"]=color
-        element["palette"]=palette
-        
-      }
-    });
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-
-    sleep(5000).then(() => { 
-      
-      artwork_data.forEach(element => {
-        console.log(element["color"])
-      })
-
-      const keys = Object.keys(artwork_data[0]);
-      
-
-      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(artwork_data));
-      var dlAnchorElem = document.getElementById('a2');
-      dlAnchorElem.setAttribute("href",     dataStr     );
-      dlAnchorElem.setAttribute("download", "g4.json");
-      //dlAnchorElem.click();
-
-     });
-    
-      
-
-  
-
+  const colors = Array.from(new Set(artwork_data.map(d=>d.color)));
+  const palettes = Array.from(new Set(artwork_data.map(d=>d.palette)));
  
-    
+  
 
-const margin = {left:150,right:20, top:50, bottom:40};
+  //Code used to get colors using colorThief, in order to increase efficiency,
+   //we directly added the acquired colors to the dataset
+
+    // artwork_data.forEach(element => {
+    //   let imageURL = element.thumbnailUrl
+    //   const img = new Image();
+    //   img.crossOrigin = 'Anonymous';
+    //   img.src=googleProxyURL+imageURL;
+    //   // const x=await loadimg(imageURL,img);
+    //   img.onload=function(){
+    //     var palette=colorThief.getPalette(img)
+    //     for(var i=0;i<palette.length;i++){
+    //       palette[i]=rgbToHex(palette[i][0],palette[i][1],palette[i][2])
+    //     }
+    
+        
+    //     var color=colorThief.getColor(img)
+        
+    //     color=rgbToHex(color[0],color[1],color[2])
+    //     element["color"]=color
+    //     element["palette"]=palette
+        
+    //   }
+    // });
+
+    // function sleep(ms) {
+    //   return new Promise(resolve => setTimeout(resolve, ms));
+    // }
+
+
+    // sleep(5000).then(() => { 
+      
+
+    //   var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(artwork_data));
+    //   var dlAnchorElem = document.getElementById('a2');
+    //   dlAnchorElem.setAttribute("href",     dataStr     );
+    //   dlAnchorElem.setAttribute("download", "g4.json");
+    //   dlAnchorElem.click();
+
+    //  });
+    
+ const margin = {left:150,right:20, top:50, bottom:40};
 
   const outerWidth = 1300;
   const outerHeight = 3000;
@@ -87,7 +79,8 @@ const margin = {left:150,right:20, top:50, bottom:40};
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-
+   
+    
 
 const years = Array.from(new Set(artwork_data.map(d=>d.year)));
 years.sort();
