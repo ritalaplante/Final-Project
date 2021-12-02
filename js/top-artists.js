@@ -1,26 +1,48 @@
 var countObj = {};
 
-d3.csv('data/female_artists_artwork.csv').then(data => {
+d3.csv('data/top10counts.csv').then(data => {
 
-    data.forEach(function(d){
-        var artist = d.artist;
-    if(countObj[artist] === undefined) {
-        countObj[artist] = 1;
-    } else {
-        countObj[artist] = countObj[artist] + 1;
-    }
-    })
+    const margin = {top:15, right:25, buttom:15, left:100},
+    width = (500 - margin.left - margin.right),
+    height = (300 - margin.top - margin.buttom);
 
-    console.log(countObj)
+    let frinkData = data.filter(function(d) {return d.artist == 'Frink, Dame Elisabeth'});
 
-    var sortable = [];
-    for (var art in countObj) {
-        sortable.push([art, countObj[art]]);
-    }
+    frinkData.sort(function(a, b) {return a.count - b.count})
+    console.log('Frink Data', frinkData);
 
-    sortable.sort(function(a, b) {
-        return b[1] - a[1];
-    });
+    // set the ranges
+    var y = d3.scaleBand()
+        .range([height, 0])
+        .padding(0.1);
 
-    console.log(sortable.slice(0,10))
+    var x = d3.scaleLinear()
+        .range([0, width]);
+    
+    var svg = d3.select("#frink_viz").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Scale the range of the data in the domains
+    x.domain([0, d3.max(frinkData, function(d){ return d.count; })])
+    y.domain(frinkData.map(function(d) { return d.medium_normalized; }));
+
+    svg.selectAll(".bar")
+        .data(frinkData)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("width", function(d) {return x(d.count); } )
+        .attr("y", function(d) { return y(d.medium_normalized); })
+        .attr("height", y.bandwidth());
+
+    var yAxis = d3.axisLeft()
+        .scale(y)
+        .tickSize(0)
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .call(g => g.select(".domain").remove())
 });
