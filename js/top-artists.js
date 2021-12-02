@@ -2,9 +2,9 @@ var countObj = {};
 
 d3.csv('data/top10counts.csv').then(data => {
 
-    const margin = {top:15, right:25, bottom:15, left:100},
-    width = (300 - margin.left - margin.right),
-    height = (100 - margin.top - margin.bottom);
+    const margin = {top:15, right:25, bottom:15, left:120},
+    width = (400 - margin.left - margin.right),
+    height = (150 - margin.top - margin.bottom);
 
     let artists = ['Frink, Dame Elisabeth', 'Hepworth, Dame Barbara','Duncombe, Susanna','Arbus, Diane','Rigby, Elizabeth','Lim, Kim','Wharncliffe, Lady','Rego, Paula','Horn, Rebecca','Almeida, Helena']
     let mediums = []
@@ -68,7 +68,7 @@ d3.csv('data/top10counts.csv').then(data => {
               })
             .attr("rx", 3)
             .attr("ry", 3)
-            .attr("height", 7)
+            .attr("height", height / aData.length - 5)
             .on("mouseover", function(event, d){
                 const pos = d3.pointer(event, window);
                 console.log(d)
