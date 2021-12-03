@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Gudea&display=swap");
 
+/* Body styling */
 body {
   font-family: "Gudea", sans-serif;
-  font-size: 10px;
+  font-size: 20px;
   margin: 0;
   text-anchor: end;
 }
 
+.y-axis { font: 11px "Gudea", sans-serif; }
+
+/* Home page and header */
 #subtitle {
   /* padding-left: 10px; */
   margin-top: 0;
@@ -50,6 +54,7 @@ body {
   /* position: relative; */
 }
 
+/* Header stylings */
 h1 {
   font-size: 40pt;
   width: 50vw;
@@ -63,12 +68,12 @@ h2 {
   font-size: 30pt;
   text-align: center;
   margin-bottom: 0;
-  padding-bottom: 0;
-  padding-top: 50px;
+  padding-bottom: 20;
   color: #0d1215;
   font-weight: bold;
 }
 
+/* Stylings for navigation bar */
 .navigation {
   background-color: #e2e1dd;
 }
@@ -101,17 +106,102 @@ h2 {
   color: #0d1215;
 }
 
-/*.row{
-    padding-top: 50px;
-    padding-right: 80px;
-    padding-bottom: 50px;
-    padding-left: 80px;
-}*/
-
+/* row and columnn styling */
 .column {
   float: left;
   width: 50%;
-  padding-top: 70px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*.box {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 2em;
+}
+
+.push {
+  row-gap: 10px;
+  column-gap: 2em;
+}*/
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 5px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artists-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artist-bio1 {
+  grid-column: col-start / span 4;
+}
+.artist-bio2 {
+  grid-column: col-start 8 / span 4;
+}
+
+.viz0 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz1 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz2 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz3 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz4 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz5 {
+  grid-column: col-start 8 / -1;
+}
+.viz6 {
+  grid-column: col-start 8 / -1;
+}
+.viz7{
+  grid-column: col-start 8 / -1;
+}
+.viz8{
+  grid-column: col-start 8 / -1;
+}
+.viz9{
+  grid-column: col-start 8 / -1;
+}
+
+#artist{
+  font-size: 15;
+}
+
+section {
+  justify-content: center;
+  align-content: center;
+}
+
+.container {
+  padding-top: 30px;
+  padding-right: 100px;
+  padding-bottom: 30px;
+  padding-left: 100px;
 }
 
 .center {
@@ -204,48 +294,229 @@ h2 {
   padding: 5px;
   text-align: center;
 }
+
+/* Top 10 artists visualization */
+
 #top-tooltip {
   position: absolute;
   display: none;
   width: auto;
   height: auto;
   background: none repeat scroll 0 0 whitesmoke;
-  border: wheat 1px solid;
+  border: #e9ecef 1px solid;
   border-radius: 8px 8px 8px 8px;
   box-shadow: -3px 3px 15px #888888;
   color: black;
-  font: 12px sans-serif;
+  font: 12px "Gudea", sans-serif;
   padding: 5px;
   text-align: center;
+  opacity: 0.85;
+}
+
+.image-overlay {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.25s;
+  z-index: 1;
+}
+
+.image-overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image-overlay:hover{
+  opacity: 1;
+
+}
+
+.image-overlay:hover > * {
+  transform: translateY(0);
+}
+
+.artist-image {
+  position: relative;
 }
 
 #frink {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #f72585;
+  /*-webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  display: block;*/
+  width: 100%;
+ /* or whatever */
 }
+.frink-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #f72585;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #hepworth {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #7209b7;
+  width: 100%; /* or whatever */
 }
+.hepworth-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #7209b7;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #duncombe {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #4cc9f0;
+  width: 100%; /* or whatever */
 }
+.duncombe-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #4cc9f0;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #arbus {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #ffb703;
+  width: 100%; /* or whatever */
 }
+.arbus-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #ffb703;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #rigby {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #38b000;
+  width: 100%; /* or whatever */
 }
+.rigby-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #38b000;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #lim {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #ff7900;
+  width: 100%; /* or whatever */
 }
+.lim-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #ff7900;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #wharncliffe {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #b7094c;
+  width: 100%; /* or whatever */
 }
+.wharncliffe-description{
+  font-size: 12;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #b7094c;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #rego {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #358f80;
+  width: 100%; /* or whatever */
 }
+.rego-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #358f80;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #horn {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #2d00f7;
+  width: 100%; /* or whatever */
 }
+.horn-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #2d00f7;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
 #almeida {
-  margin-bottom: 8px; /* or whatever */
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #9d8189;
+  width: 100%; /* or whatever */
+}
+.almeida-description{
+  font-size: 12;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #9d8189;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
 }

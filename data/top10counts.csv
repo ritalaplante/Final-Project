@@ -18,7 +18,6 @@ artist,medium_normalized,count
 "Lim, Kim",Wood,2
 "Horn, Rebecca",Ink,3
 "Horn, Rebecca",Film,7
-"Horn, Rebecca",Mixed Media,24
 "Horn, Rebecca",Graphite,8
 "Hepworth, Dame Barbara",Metal,32
 "Hepworth, Dame Barbara",Wood,14
@@ -41,3 +40,4 @@ artist,medium_normalized,count
 "Arbus, Diane",Photograph,69
 "Almeida, Helena",Ink,38
 "Almeida, Helena",Photograph,1
+"Horn, Rebecca",Mixed Medium,24
