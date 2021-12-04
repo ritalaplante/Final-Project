@@ -3,7 +3,7 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   
   //filter those have no image and don't have color
   data = data.filter((d) => d.color != null);
-
+  data=data.slice(0,100)
   //sort by year in descending order
   data.sort((a, b) => b.year - a.year);
 
@@ -36,7 +36,7 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
     .attr("width", rect_width)
     .attr("height", rect_height)
     .attr("x", function (d, i) {
-      return Math.floor(i / num_per_col) + (i % num_per_row) * rect_width;
+      return (i % num_per_row) * rect_width;
     })
     .attr("y", function (d, i) {
       return Math.floor(i / num_per_col) * rect_height;
@@ -71,9 +71,16 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
             " + width:300px >" +
             "</div>"
         );
+
+        d3.select(this)
+        .attr("opacity",0.7)
+        
     })
     .on("mouseleave", function (d) {
       d3.select("#artwork-tooltip").style("display", "none");
+      d3.select(this)
+        .attr("opacity",1)
+        
     })
     .on("click", function (event, d, i) {
       window.open(d.artwork_url);

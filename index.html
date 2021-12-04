@@ -37,7 +37,7 @@
   <script src="js/color-picker.js" defer></script>
   <script src="js/color-finder.js" defer></script>
   <script src="js/scatterplot.js" defer type="module"></script>
-  <script src="js/collage.js" defer type="module"></script>
+  <!-- <script src="js/collage.js" defer type="module"></script> -->
 </head>
 <body>
   <!-- <a id="a2" download="file.csv">Download</a> -->
@@ -176,14 +176,38 @@
       <span>
         <span>Pick a color: </span>
         <input id="picker" type="color" value="#0000FF" />
+        
       </span>
       <button class="button" id="check">Get Artwork</button>
+      <p id="current-color"></p>
       <div class="row">
           <div class="column column-40">
+
             <div id="img-container" ></div>
+
+            <div class="info">
+              <p>
+                <span class="bold-title" id="artist-info"></span>
+                <span class="thin-font"  id='birth-year'></span>
+              </p>
+              <p>
+                <span class="bold-title" id='title'></span>
+                <span class="thin-font" id='year-created'></span>
+              </p>
+             
+              <p id='medium'></p>
+             
+              <p id='other-info'></p>
+
+              <p>
+                <a id="artwor-link" target="_blank" href="">Visit Museum website</a>
+              </p>
+            </div>
           </div>
           <div class="column column-40">
-            <div id="primary-color" ></div>
+            <div id="primary-color" >
+              <span id='pchex'></span>
+            </div>
             <div id="palette" ></div>
           </div>
         
