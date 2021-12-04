@@ -2,12 +2,12 @@
   <meta charset="utf-8" />
   <title>Final Project</title>
 
-  <link
+  <!--<link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   />
 
-  <!-- <link
+  <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
   />
@@ -19,16 +19,19 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
   /> -->
+  
   <link rel="stylesheet" href="style.css" />
 
 
   <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
-    <script src="js/pie-chart.js" defer type="module"></script>
+  <script src="js/pie-chart.js" defer type="module"></script>
     
-    <script src = "js/area-chart.js" defer type="module"></script>
-    <script src = "js/artist-origins.js" defer type="module"></script>
+  <script src = "js/area-chart.js" defer type="module"></script>
+  <script src = "js/artist-origins.js" defer type="module"></script>
+
+  <script src = "js/top-artists.js" defer type = "module"></script>
     
 
   <script src="js/pie-chart.js" defer type="module"></script>
@@ -116,54 +119,256 @@
     </div>
   </section>
 
-  <!-- scatterplot -->
-  <section id="stats">
-      <p>Here is a scatter plot displaying size of the artworks.</p>
-      <p>Each circle represents an artwork, and its color is the primary color of the artwork</p>
-    <div class="scatterplot"></div>
-  </section>
-
-  <section id="artist-origin"></section>
-  <div class="container">
-    <div class="row">
-      <div class="column">
-        <img id="origins" src="images/origins.png" />
-      </div>
-      <div class="column" id="vis-description">
-        <p>
-          The following is a chart that shows where female artists in the
-          collection were born. We intended to make a map; however, we are
-          finding the task much more difficult than we originally intended since
-          not all country names in the dataset are listed in English. Instead,
-          we created a preliminary tree map in Tableau, but would be open to
-          suggestions about how we could use the geographical data in our
-          dataset.
-        </p>
-      </div>
-    </div>
-  </div>
-
   <!--SECTION: Top 10 Female Artists-->
   <section id="artists">
     <h2>Meet Popular Artists</h2>
-    <div class="container" id="vis-description">
+    <div class = "artists-intro">
       <p>
-        Our final visualization is not yet complete, but this is a sketch. Here
-        we plan on incorporating a more creative visualization that will require
-        more time and styling.
+        Explore the 10 most collected artists in the Tate Gallery. Hover over an artist profile to learn more about where the artist's
+        origins and mediums of choice. Click on an artist profile picture to learn more about her on the Tate Gallery website. 
+        Hover over the bars to explore how many pieces in each medium the gallery owns. <br><br>
+        Scrolling through these profiles we see that women of the Tate Gallery create art in a variety of mediums with various materials.
+        We also see their artwork spans across three centuries. Do you recognize a difference in mediumns between time period?
       </p>
     </div>
-    <img src="images/topTen.jpeg" width="700px" height="auto" class="center" />
+    <div id="top-tooltip"></div>
+    <div class="wrapper">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/dame-elisabeth-frink-1124">
+            <img id="frink" src="images/frink-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "frink-description">
+                English Sculptor and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Dame Elisabeth Frink</b> (1930-1993)
+        </p>
+      </div>
+      <div id = "viz0"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/kim-lim-1512">
+            <img id="lim" src="images/lim-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "lim-description">
+                Singoporean-British Sculptor and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Kim Lim</b> (1936-1997)
+        </p> 
+      </div>
+      <div id = "viz5"></div>
+    </div>
+    <div class="wrapper">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/dame-barbara-hepworth-1274">
+            <img id="hepworth" src="images/hepworth-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "hepworth-description">
+                English Artist and Sculptor
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Dame Barbara Hepworth</b> (1903-1975)
+        </p>
+      </div>
+      <div id = "viz1"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/lady-wharncliffe-2576">
+            <img id="wharncliffe" src="images/Wharncliffe-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "wharncliffe-description">
+                Irish-Born British Aristocrat Landscape Painter
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Lady Wharncliffe</b> (1776-1853)
+        </p>
+      </div>
+      <div id = "viz6"></div>
+    </div>
+    <div class="wrapper">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/susanna-duncombe-2284">
+            <img id="duncombe" src="images/duncombe-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "duncombe-description">
+                English Poet and Artist
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Susanna Duncombe</b> (1725-1812)
+        </p>
+      </div>
+      <div id = "viz2"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/paula-rego-1823">
+            <img id="rego" src="images/rego-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "rego-description">
+                Portuguese-Bristish Painter and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Paula Rego</b> (1935- )
+        </p>
+      </div>
+      <div id = "viz7"></div>
+    </div>
+    <div class="wrapper">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/diane-arbus-5271">
+            <img id="arbus" src="images/arbus-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "arbus-description">
+                American Photographer
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <p id = "artist">
+            <b>Diane Arbus</b> (1923-1971)
+          </p>
+        </p>
+      </div>
+      <div id = "viz3"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/rebecca-horn-2269">
+            <img id="horn" src="images/horn-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "horn-description">
+                German Instalation Artist and Filmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Rebecca Horn</b> (1944- )
+        </p>
+      </div>
+      <div id = "viz8"></div>
+    </div>
+    <div class="wrapper">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/elizabeth-rigby-2555">
+            <img id="rigby" src="images/rigby-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "rigby-description">
+                British Author, Artist, and Art Critic
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Elizabeth Rigby</b> (1809-1893)
+        </p>
+      </div>
+      <div id = "viz4"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/helena-almeida-12989">
+            <img id="almeida" src="images/almeida-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "almeida-description">
+                Portuguese Photographer and Performance Artist
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Helena Almeida</b> (1934-2018)
+        </p>
+      </div>
+      <div id = "viz9"></div>
+    </div>
+
+    <!-- scatterplot 
+  <section id="stats">
+    <p>Here is a scatter plot displaying size of the artworks.</p>
+    <p>Each circle represents an artwork, and its color is the primary color of the artwork</p>
+    <div class="scatterplot"></div>
+  </section> -->
+    
+    <!--
+      <div class = "container">
+        <div id="top-tooltip"></div>
+        <div class="column" id="top5-vis">
+            <div id = "viz0">
+              <img id="frink" src="images/frink-modified.png" width="100"/>
+              <p>Artist: Dame Elisableth Frink</p>
+            </div>
+            <div id = "viz1">
+              <img id="hepworth" src="images/hepworth-modified.png" width="100"/>
+            </div>
+            <div id = "viz2">
+              <img id="duncombe" src="images/duncombe-modified.png" width="100"/>
+            </div>
+            <div id = "viz3">
+              <img id="arbus" src="images/arbus-modified.png" width="100"/>
+            </div>
+            <div id = "viz4">
+              <img id="rigby" src="images/rigby-modified.png" width="100"/>
+            </div>
+        </div>
+        <div class="column" id="last5-vis">
+            <div id = "viz5">
+              <img id="lim" src="images/lim-modified.png" width="100"/>
+            </div>
+            <div id = "viz6">
+              <img id="wharncliffe" src="images/Wharncliffe-modified.png" width="100"/>
+            </div>
+            <div id = "viz7">
+              <img id="rego" src="images/rego-modified.png" width="100"/>
+            </div>
+            <div id = "viz8">
+              <img id="horn" src="images/horn-modified.png" width="100"/>
+            </div>
+            <div id = "viz9">
+              <img id="almeida" src="images/almeida-modified.png" width="100"/>
+            </div>
+        </div>
+        
+      </div>
+    -->
   </section>
 
   <!--SECTION: Gallery/Artwork Overview-->
   <section id="gallery">
-    <h2>Explore the Collection</h2>
-    <p>Here is a collage of all artworks in the database</p>
-    <p> Click the images to visit details page</p>
-    <div class="collage">
-        <div id="artwork-tooltip"></div>
+    <div class = "container">
+      <h2>Explore the Collection</h2>
+      <p>Here is a collage of all artworks in the database</p>
+      <p> Click the images to visit details page</p>
     </div>
+
+    <div class="collage">
+      <div id="artwork-tooltip"></div>
+    </div>
+  
+    
+    
 
 
     <div class="color-picker">
