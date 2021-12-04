@@ -54,10 +54,17 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   var init_color = finder.findClosestColor(picker.value);
 
   fetchArtwork(data,init_color)
-  btn.addEventListener("click", (event) => {
-    
+  picker.addEventListener('change',(event)=>{
     document.getElementById('current-color').innerHTML="Current color:  "+picker.value
-    var color = finder.findClosestColor(picker.value);
+  })
+  btn.addEventListener("click", (event) => {
+    //find the exact value
+    var color = filtered_color.find(e=>e==picker.value)
+    //if not, use color finder
+    console.log(color)
+    if(color==undefined)
+      color = finder.findClosestColor(picker.value);
+    console.log(color)
     fetchArtwork(data,color)
 });
 });
