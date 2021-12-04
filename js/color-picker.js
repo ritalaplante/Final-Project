@@ -6,13 +6,16 @@ const svg = d3
 .append("svg")
 .attr("width", 200)
 .attr("height", 200);
+
+
 //create palette
 const p = d3
   .select("#palette")
   .append("svg")
   .attr("width", 600)
   .attr("height", 200);
-
+  const tarea=p.append('g')
+  
 svg
 .append("circle")
 .attr("class", "primary")
@@ -121,18 +124,29 @@ function updatePalette(palette){
 
       circles.exit().remove()
 
-      svg.selectAll('text')
-      .data(palette)
+     
+      var texts=tarea.selectAll('.phex')
+      .data(palette,d=>d)
+
+      texts.enter()
       .append('text')
+      .attr('class','phex')
+      .attr('x',function(d,i){
+        return 40+(i%5) * 70;
+      })
+      .attr('y',function(d,i){
+        if(i<5)
+        return 50+40
+        else
+        return 140+40
+      })
       .text(d=>d)
-       .attr('dx', function (d) {
-        return d.x;
-    })
-    .attr('dy', function (d) {
-        return d.y - 13;
-    })
-    .attr('text-anchor', 'middle')
-    .attr('font-size', 11);
+      .attr("font-size","14px")
+      .style("text-anchor", "middle")
+
+
+      texts.exit().remove()
+  
 
       
       

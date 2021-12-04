@@ -266,6 +266,8 @@ section {
   margin: 30px;
 }
 
+
+
 /*#pie-tooltip{
     position: fixed;
     display: inline;
@@ -295,7 +297,6 @@ section {
   text-align: center;
 }
 
-<<<<<<< HEAD
 .bold-title{
   font-size: 25px;
   font-weight: bolder;
@@ -309,7 +310,6 @@ section {
 .info{
   border: wheat 1px solid;
 }
-=======
 /* Top 10 artists visualization */
 
 #top-tooltip {
@@ -535,4 +535,3 @@ section {
   font-weight: bold;
   background: rgba(255,255,255,0.8);
 }
->>>>>>> ad963e10d55aa6f6b555475ec92410b56e94862b
