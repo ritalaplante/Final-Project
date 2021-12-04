@@ -35,6 +35,7 @@
     
 
   <script src="js/pie-chart.js" defer type="module"></script>
+  <script src="js/gender-barChart.js" defer type="module"></script>
   <script src="js/area-chart.js" defer type="module"></script>
   <script src="js/artist-origins.js" defer type="module"></script>
   <script src="js/color-picker.js" defer></script>
@@ -73,13 +74,66 @@
   <!--SECTION: Highlights and Overview-->
   <section id="highlights">
     <h2>Highlights and Overview</h2>
+    <div class = highlights-intro>
+      <p>
+        This section explores patterns in gender at the TATE. This section aims to explore the prevelance of female artists
+        within the TATE collection and the time periods during which these female artists created the majority of their artwork.
+      </p>
+    </div>
+    <h3>Gender Breakdown at the TATE</h3>
+    <div class = "wrapper-barchart">
+      <div class = "barchart-display">
+        <div id = "bar-chart"></div>
+      </div>
+      <div class = "barchart-description">
+        <p>
+          Like most art collections around the world, a majority of the TATE
+          collection is composed of male artists. The lack of female representation means
+          it's important for us to learn more about these artists. For instance, we can ask 
+          the following questions: 
+          <ul>
+            <li>When did they create their work?</li>
+            <li>What mediums did they use?</li>
+            <li>When did they live and where did they live?</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+    <h3 id = "areachart-title">When did these artists create their work? When was their art aquired by the gallery?</h3>
+    <div class = "wrapper-areachart">
+      <div class = "areachart-description">
+        <p>
+          Most female artists of the TATE collection were not creating art until the 20th century. Simillarly, TATE galleries
+          were not collecting art created by female artists until the 20th century. Women were largely excluded from the art scene for 
+          many centuries, and even today their work often is under-collected. Notice:
+          <ul>
+            <li>
+              Throughout the 18th and 19th centuries there is very little change in art created and collected.
+              Art created by female artists during these periods was very rare.
+            </li>
+          </ul>
+        </p>
+      </div>
+      <div class = "areachart-display">
+        <div class = "drop-down">
+          <select class ="groupBy">
+            <option value="year">Year Created</option>
+            <option value="acquisition">Year of Acquisition</option>
+          </select>
+        </div>
+        <div class="chart"></div>
+      </div>
+    </div>
 
     <!--Pie chart artist genders-->
-    <div class="container">
+    <!--<div class="container">
       <div class="row">
         <div class="column" id="pie-chart">
           <div id="pie-tooltip"></div>
+          <div class = legendColors></div>
+          <div class = "legendTitles"></div>
         </div>
+      </div>
         <div class="column" id="vis-description">
           <p>
             Like most art collections around the world, a majority of the TATE
@@ -117,22 +171,22 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!--SECTION: Top 10 Female Artists-->
   <section id="artists">
     <h2>Meet Popular Artists</h2>
     <div class = "artists-intro">
       <p>
-        Explore the 10 most collected artists in the Tate Gallery. Hover over an artist profile to learn more about where the artist's
-        origins and mediums of choice. Click on an artist profile picture to learn more about her on the Tate Gallery website. 
+        Explore the 10 most collected artists in the TATE Gallery. Hover over an artist profile to learn more about where the artist's
+        origins and mediums of choice. Click on an artist profile picture to learn more about her on the TATE Gallery website. 
         Hover over the bars to explore how many pieces in each medium the gallery owns. <br><br>
-        Scrolling through these profiles we see that women of the Tate Gallery create art in a variety of mediums with various materials.
+        Scrolling through these profiles we see that women of the TATE Gallery create art in a variety of mediums with various materials.
         We also see their artwork spans across three centuries. Do you recognize a difference in mediumns between time period?
       </p>
     </div>
     <div id="top-tooltip"></div>
-    <div class="wrapper">
+    <div class="wrapper-artist">
       <div class="artist-bio1">
         <div class = "artist-image">
           <a href="https://www.tate.org.uk/art/artists/dame-elisabeth-frink-1124">
@@ -166,7 +220,7 @@
       </div>
       <div id = "viz5"></div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper-artist">
       <div class="artist-bio1">
         <div class = "artist-image">
           <a href="https://www.tate.org.uk/art/artists/dame-barbara-hepworth-1274">
@@ -200,11 +254,11 @@
       </div>
       <div id = "viz6"></div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper-artist">
       <div class="artist-bio1">
         <div class = "artist-image">
           <a href="https://www.tate.org.uk/art/artists/susanna-duncombe-2284">
-            <img id="duncombe" src="images/duncombe-modified.png" width="100"/>
+            <img id="duncombe" src="images/Duncombe-modified.png" width="100"/>
             <div class = "image-overlay">
               <p class = "duncombe-description">
                 English Poet and Artist
@@ -234,7 +288,7 @@
       </div>
       <div id = "viz7"></div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper-artist">
       <div class="artist-bio1">
         <div class = "artist-image">
           <a href="https://www.tate.org.uk/art/artists/diane-arbus-5271">
@@ -270,7 +324,7 @@
       </div>
       <div id = "viz8"></div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper-artist">
       <div class="artist-bio1">
         <div class = "artist-image">
           <a href="https://www.tate.org.uk/art/artists/elizabeth-rigby-2555">

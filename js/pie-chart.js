@@ -19,7 +19,7 @@ const svg = d3.select("#pie-chart")
 const data = {Unknown: 116, Male: 2895, Female: 521}
 
 // set the color scale
-const color = d3.scaleOrdinal()
+const colorScale = d3.scaleOrdinal()
     .range(['#2ea2cf', '#7ff9fd', '#063792']); 
     //white, blue, red
 
@@ -40,7 +40,7 @@ svg
   .data(data_ready)
   .join('path')
     .attr('d', arcGenerator)
-    .attr('fill', function(d){ return(color(d.data[0])) })
+    .attr('fill', function(d){ return(colorScale(d.data[0])) })
     //.attr("stroke", "black")
     //.style("stroke-width", "2px")
     .style("opacity", 0.7)
@@ -56,6 +56,27 @@ svg
   .on("mouseout", function(d){
     d3.select("#pie-tooltip").style("display", "none");
   });
+
+  const legend = svg.append("g");
+
+  legend.selectAll(".legendColors")
+    .data(colorScale.domain())
+    .enter()
+    .append("rect")
+    .attr("x", 400)
+    .attr("y", function(d,i){ return 275 + i*(20+5)}) 
+    .attr("width", 20)
+    .attr("height", 20)
+    .attr("fill", d=>colorScale(d));
+
+  legend.selectAll(".legendLabels")
+    .data(colorScale.domain())
+    .enter()
+    .append("text")
+    .attr("x", 400 + 20*1.2)
+    .attr("y", function(d,i){ return 275 + i*(20 +5) + (25/2)}) 
+    .attr("font-size", 12)
+    .text(d=>d);
     
 
 // Now add the annotation. Use the centroid method to get the best coordinates
@@ -67,8 +88,3 @@ svg
   .attr("transform", function(d) { return `translate(${arcGenerator.centroid(d)})`})
   .style("text-anchor", "middle")
   .style("font-size", 17)*/
-
-
-
-
-

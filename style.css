@@ -9,6 +9,12 @@ body {
 }
 
 .y-axis { font: 11px "Gudea", sans-serif; }
+.x-axis { font: 18px "Gudea", sans-serif; stroke-width: 1.5; }
+.y-labelArea { font: 20px "Gudea", sans-serif; font-weight: bold; }
+.x-labelArea { font: 20px "Gudea", sans-serif; font-weight: bold; }
+.bar-labels { font: 18px "Gudea", sans-serif; }
+.x-axisArea { font: 18px "Gudea", sans-serif; stroke-width: 1.5; }
+.y-axisArea { font: 18px "Gudea", sans-serif; stroke-width: 1.5;}
 
 /* Home page and header */
 #subtitle {
@@ -73,6 +79,14 @@ h2 {
   font-weight: bold;
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #0d1215;
+  font-weight: bold;
+}
+
 /* Stylings for navigation bar */
 .navigation {
   background-color: #e2e1dd;
@@ -130,7 +144,121 @@ h2 {
   column-gap: 2em;
 }*/
 
-.wrapper {
+.wrapper-barchart {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 5px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 335px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper-areachart {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 45px;
+
+  box-sizing: border-box;
+  width: 1600px;
+  height: 430px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.areachart-display {
+  grid-column: col-start 12 / span -1;
+}
+.areachart-description {
+  grid-column: col-start 3 / span 5;
+}
+
+#areachart-title {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 30;
+  color: #0d1215;
+  font-weight: bold;
+}
+
+select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid #b7094c;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.0em;
+  padding: 0.25em 3.0em 0.25em 0.5em;
+
+  /* reset */
+
+  /*margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.groupBy {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(0.5em + 2px),
+    calc(100% - 15px) calc(0.5em + 2px),
+    calc(100% - 2.5em) 0.25em;
+  background-size:
+    5.0px 5.0px,
+    5.0px 5.0px,
+    1px 1.1em;
+  background-repeat: no-repeat;
+}
+
+select.groupBy:focus {
+  background-image:
+    linear-gradient(45deg, #b7094c 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, #b7094c 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 15px) 0.5em,
+    calc(100% - 20px) 0.5em,
+    calc(100% - 2.5em) 0.25em;
+  background-size:
+    5.0px 5.0px,
+    5.0px 5.0px,
+    1px 1.1em;
+  background-repeat: no-repeat;
+  border-color: #b7094c;
+  outline: 0;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+.highlights-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 75px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.barchart-display {
+  grid-column: col-start / span 8;
+}
+.barchart-description {
+  grid-column: col-start 9 / -1;
+}
+
+.wrapper-artist {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
   gap: 5px;
@@ -280,7 +408,7 @@ section {
    border: wheat 1px solid;
   }*/
 
-#pie-tooltip {
+/*#pie-tooltip {
   position: absolute;
   display: none;
   width: auto;
@@ -293,7 +421,7 @@ section {
   font: 12px sans-serif;
   padding: 5px;
   text-align: center;
-}
+}*/
 
 /* Top 10 artists visualization */
 
@@ -520,3 +648,4 @@ section {
   font-weight: bold;
   background: rgba(255,255,255,0.8);
 }
+

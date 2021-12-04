@@ -1,6 +1,6 @@
-const margin = {top:50, left:60, right:50, bottom:50};
-const width = 650 - margin.left - margin.right;
-const height = 450 - margin.top - margin.bottom;
+const margin = {top:50, left:75, right:40, bottom:60};
+const width = 750 - margin.left - margin.right;
+const height = 400 - margin.top - margin.bottom;
 
 // Create an SVG element
 const svg = d3.selectAll(".chart").append("svg")
@@ -28,17 +28,19 @@ const yScale = d3.scaleLinear()
 const xAxis = d3.axisBottom()
     .tickFormat(d3.format("d"))
     .scale(xScale)
+    .tickSizeOuter(0)
 
 const yAxis = d3.axisLeft()
     .ticks(5)
     .scale(yScale)
+    .tickSizeOuter(0)
 
 svg.append("g")
-    .attr("class", "axis x-axis")
+    .attr("class", "x-axisArea")
     .attr("transform", `translate(0, ${height})`)
     
 svg.append("g")
-    .attr("class", "axis y-axis")
+    .attr("class", "y-axisArea")
 
 /*svg.append('line').classed('hoverLine', true)
 svg.append('circle').classed('hoverPoint', true)
@@ -49,23 +51,25 @@ svg.on('mousemove',function(event,d){
 })*/
 
 const labelY = svg.append('text')
-    .attr('x', -80)
-    .attr('y', -40)
+    .attr("class", "y-labelArea")
+    .attr('x', -150)
+    .attr('y', -50)
     .attr('text-anchor', 'middle')
     .attr('alignment-baseline', 'middle')
     .attr("transform", "rotate(-90)")
-    .attr('font-size', 14)
-    .attr('fill', 'grey')
-    .attr("font-weight", 700);
+    //.attr('font-size', 14)
+    //.attr('fill', 'grey')
+    //.attr("font-weight", 700);
 
 const labelX = svg.append('text')
-    .attr('x', 250)
-    .attr('y', 380)
+    .attr("class", "x-labelArea")
+    .attr('x', 350)
+    .attr('y', 335)
     .attr('text-anchor', 'middle')
     .attr('alignment-baseline', 'middle')
-    .attr('font-size', 14)
-    .attr('fill', 'grey')
-    .attr("font-weight", 700);
+    //.attr('font-size', 14)
+    //.attr('fill', 'grey')
+    //.attr("font-weight", 700);
 
 const title = svg.append("text")
 
@@ -93,10 +97,12 @@ function update(data) {
     // Select the area and set data using datum, call the area function
     d3.select(".area")
         .datum(data)
+        .style("opacity", 0.0)
         .transition()
         .duration(1000)
+        .style("opacity", 1.0)
         .attr("d", area)
-        .attr("fill", "#2ea2cf")
+        .attr("fill", "#e5e5e5")
         
     // Add a line to the area chart
     var line = d3.line()
@@ -105,20 +111,22 @@ function update(data) {
 
     d3.select(".line")
         .datum(data)
+        /*.style("opacity", 0.0)
         .transition()
-        .duration(1000)
+        .duration(500)
+        .style("opacity", 1.0)*/
         .attr("d", line)
         .attr("fill", "none")
-        .attr("stroke", "#063792")
+        .attr("stroke", "#b7094c")
         .attr("stroke-width", 1.5)
 
     // Update axes using update scales
-    svg.select(".x-axis")
+    svg.select(".x-axisArea")
         .transition()
         .duration(1000)
         .call(xAxis)
 
-    svg.select(".y-axis")
+    svg.select(".y-axisArea")
         .transition()
         .duration(1000)
         .call(yAxis)
@@ -129,7 +137,7 @@ function update(data) {
 
 }
 
-let type = document.querySelector('#group-by').value
+let type = document.querySelector('.groupBy').value
 
 Promise.all([ // load multiple files
 	d3.csv('data/acquisition_by_year.csv'),
@@ -151,7 +159,7 @@ Promise.all([ // load multiple files
 
     update(artwork); 
 
-    d3.select('#group-by')
+    d3.select('.groupBy')
         .on('change', (event,d) => {
             type = event.target.value;
             if (type == 'year'){
