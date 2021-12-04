@@ -3,7 +3,7 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   
   //filter those have no image and don't have color
   data = data.filter((d) => d.color != null);
-
+  
   //sort by year in descending order
   data.sort((a, b) => b.year - a.year);
 
@@ -11,8 +11,8 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   var num_per_col = Math.ceil(Math.sqrt(data.length));
 
   var margin = { top: 20, right: 20, bottom: 20, left: 20 },
-    width = 1600 - margin.left - margin.right,
-    height = 1600 - margin.top - margin.bottom;
+    width = 1400 - margin.left - margin.right,
+    height = 1400 - margin.top - margin.bottom;
 
   var rect_width = width / num_per_row;
   var rect_height = height / num_per_col;
@@ -36,19 +36,18 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
     .attr("width", rect_width)
     .attr("height", rect_height)
     .attr("x", function (d, i) {
-      return Math.floor(i / num_per_col) + (i % num_per_row) * rect_width;
+      return (i % num_per_row) * rect_width;
     })
     .attr("y", function (d, i) {
       return Math.floor(i / num_per_col) * rect_height;
     })
-    .style("fill", function (d) {
-      //if (d.color == null) return "#ffffff";
-      return d.color;
-    })
     //tooltip
     .on("mouseenter", function (event, d) {
+      var year,acyear 
+      year=d.year==null?"unknown":d.year
+      acyear=d.acquisitionYear==null?"unknown":d.acquisitionYear
       const [x, y] = d3.pointer(event,svg);
-      console.log(x, y);
+      
       d3.select("#artwork-tooltip")
         .style("left", x + 30 + "px")
         .style("top", y + 20 + "px")
@@ -61,42 +60,37 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
             d.artist +
             "<br>" +
             "Year created: " +
-            d.year +
+            year +
             "<br>" +
             "Year acquired: " +
-            d.acquisitionYear +
+            acyear +
+            "<br>" +
+            "Medium: "+d.medium
+            + "<br>" +
+            "Primary Color: "+ '<span class="smallbox" style="color:'+d.color+'">&#9679;</span>'+
+            d.color+
             "<div>" +
             "<img src=" +
             d.thumbnailUrl +
             " + width:300px >" +
             "</div>"
         );
+
+        d3.select(this)
+        .attr("opacity",0.7)
+        
     })
     .on("mouseleave", function (d) {
       d3.select("#artwork-tooltip").style("display", "none");
+      d3.select(this)
+        .attr("opacity",1)
+        
     })
     .on("click", function (event, d, i) {
       window.open(d.artwork_url);
     });
 
-  //   svg.selectAll("rect")
-  // .data(data)
-  // .enter()
-  // .append('rect')
-  // .attr("width", rect_width)
-  // .attr("height", rect_height)
-  // .attr("x", function(d,i){
-
-  //   return Math.floor(i/num_per_col)+i%num_per_row*rect_width
-  // })
-  // .attr("y", function(d,i){
-  //     return Math.floor(i/num_per_col)*rect_height
-  // })
-  // .style('fill',function(d){
-  //   if(d.color==null)
-  //     return "#ffffff"
-  //   return d.color
-  // })
+  
 
   //seperator
 

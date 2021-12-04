@@ -1,8 +1,4 @@
-const p = d3
-  .select("#palette")
-  .append("svg")
-  .attr("width", 600)
-  .attr("height", 100);
+
     
 //create a circle for primary color
 const svg = d3
@@ -11,6 +7,15 @@ const svg = d3
 .attr("width", 200)
 .attr("height", 200);
 
+
+//create palette
+const p = d3
+  .select("#palette")
+  .append("svg")
+  .attr("width", 600)
+  .attr("height", 200);
+  const tarea=p.append('g')
+  
 svg
 .append("circle")
 .attr("class", "primary")
@@ -44,33 +49,63 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   
   const picker = document.querySelector("#picker");
   const btn = document.querySelector("#check");
+
+  document.getElementById('current-color').innerHTML="Current color:  "+picker.value
+  var init_color = finder.findClosestColor(picker.value);
+
+  fetchArtwork(data,init_color)
+  picker.addEventListener('change',(event)=>{
+    document.getElementById('current-color').innerHTML="Current color:  "+picker.value
+  })
   btn.addEventListener("click", (event) => {
-    var color = finder.findClosestColor(picker.value);
-    //find target artwork object by color
-    var target = data.find((d) => d.color == color);
-
-    // change primary circle color
-    svg.select("circle").attr("class", "primary").style("fill", color)
-    .attr('opacity',1);
-
-    // change palette
-    updatePalette(target.palette);
-
-    //artwork title
-    img.select('text')
-    .attr('class','title')
-    .append('text')
-    .text(target.title)
-    .attr('x',10)
-    .attr('y',10)
-
-    //get image of target
-    img
-      .select("image")
-      .attr("class", "artwork-img")
-      .attr("xlink:href", target.thumbnailUrl);
-  });
+    //find the exact value
+    var color = filtered_color.find(e=>e==picker.value)
+    //if not, use color finder
+    console.log(color)
+    if(color==undefined)
+      color = finder.findClosestColor(picker.value);
+    console.log(color)
+    fetchArtwork(data,color)
 });
+});
+
+function fetchArtwork(data,color){
+  
+//find target artwork object by color
+var target = data.find((d) => d.color == color);
+
+// change primary circle color
+svg.select("circle").attr("class", "primary").style("fill", color)
+.attr('opacity',1);
+
+// change palette
+updatePalette(target.palette);
+
+var artist,birth,year,medium,info;
+artist=target.artist
+var names= artist.split(",");
+
+artist=names[1]+" "+names[0]
+birth=target.yearOfBirth==null?"":"(b."+target.yearOfBirth+")"
+year=target.year==null?"":target.year
+medium=target.medium==null?"unknown medium":target.medium
+info=target.creditLine==null?"":target.creditLine
+document.getElementById("artist-info").innerHTML=artist
+document.getElementById("birth-year").innerHTML=birth
+document.getElementById("title").innerHTML=target.title
+document.getElementById("year-created").innerHTML=year
+document.getElementById("medium").innerHTML=medium
+document.getElementById("other-info").innerHTML=info
+document.getElementById("artwor-link").href=target.artwork_url
+document.getElementById('pchex').innerHTML= 'Primary Color: '+target.color
+
+
+//get image of target
+img
+  .select("image")
+  .attr("class", "artwork-img")
+  .attr("xlink:href", target.thumbnailUrl);
+}
 
 
 function updatePalette(palette){
@@ -81,11 +116,45 @@ function updatePalette(palette){
       .append("circle")
       .attr("class", "palette")
       .attr("cx", function (d, i) {
-        return 10+i * 30;
+        return 40+(i%5) * 70;
       })
-      .attr("cy", 30)
-      .attr("r", 5)
+      .attr("cy",function(d,i){
+        //put into 2 lines 
+        if(i<5)
+        return 50
+        else
+        return 140
+      })
+      .attr("r", 20)
       .attr("stroke", "black")
       .attr("fill", d=>d)
+
+      circles.exit().remove()
+
+     
+      var texts=tarea.selectAll('.phex')
+      .data(palette,d=>d)
+
+      texts.enter()
+      .append('text')
+      .attr('class','phex')
+      .attr('x',function(d,i){
+        return 40+(i%5) * 70;
+      })
+      .attr('y',function(d,i){
+        if(i<5)
+        return 50+40
+        else
+        return 140+40
+      })
+      .text(d=>d)
+      .attr("font-size","14px")
+      .style("text-anchor", "middle")
+
+
+      texts.exit().remove()
+  
+
+      
       
 }
