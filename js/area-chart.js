@@ -117,7 +117,7 @@ function update(data) {
         .style("opacity", 1.0)*/
         .attr("d", line)
         .attr("fill", "none")
-        .attr("stroke", "#b7094c")
+        .attr("stroke", "#7f5539")
         .attr("stroke-width", 1.5)
 
     // Update axes using update scales
