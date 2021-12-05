@@ -4,8 +4,8 @@
 const svg = d3
 .select("#primary-color")
 .append("svg")
-.attr("width", 200)
-.attr("height", 200);
+.attr("width", 100)
+.attr("height", 100);
 
 
 //create palette
@@ -19,9 +19,9 @@ const p = d3
 svg
 .append("circle")
 .attr("class", "primary")
-.attr("cx", 100)
-.attr("cy", 100)
-.attr("r", 50)
+.attr("cx", 50)
+.attr("cy", 50)
+.attr("r", 35)
 .attr("stroke", "black")
 .attr('opacity',0)
 
@@ -126,7 +126,7 @@ img
       .style("left", pos[0]+30+"px")
       .style("top",pos[1]+20+"px")
       .style("display", "inline-block")
-      .html("Title: "+target.title+"<br>" + target.artist + " " + "(b."+target.yearOfBirth+")" + "<br>" + target.medium + "<br>" +target.creditLine)    
+      .html("<b>Title: </b>"+target.title+" (" + year + ")<br><b>Artist: </b>" + artist + " " +birth+ "<br><b>Medium: </b>" + medium)    
       console.log("over")
     d3.select(this)
       .style("opacity", .75)
