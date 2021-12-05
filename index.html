@@ -411,40 +411,76 @@
 
   <!--SECTION: Gallery/Artwork Overview-->
   <section id="gallery">
-    <div class = "container">
-      <h2>Explore the Collection</h2>
-      <p>Here is a collage of all artworks in the database</p>
-      <p> Click the images to visit details page</p>
+    <h2>Explore the Collection</h2>
+    <div class = "collage-intro">
+      <p>
+        Below is a complete collection of all publicly available artwork from the TATE collection created by female artists.
+        Hover over each image to learn more about the image and its properties. Click on the image to view the artwork on the 
+        TATE gallery webpage. Scrolling through these images reveals just how varied the artwork created by female artists is. 
+        Can you recognize patterns across time periods? What pieces and colors stand out the most? 
+      </p>
     </div>
-
-    <div class="collage">
-      <div id="artwork-tooltip"></div>
+    <div class = "wrapper-collage">
+      <div class="collage">
+        <div id="artwork-tooltip"></div>
+      </div>
     </div>
-  
-    
-    
-
 
     <div class="color-picker">
-      <h2>Explore the artworks by color</h2>
-      <p>
-        Find a color and get the artwork that has the most similar primary color
-        <br> 
-        It also returns the palette of the image
-      </p>
-      <span>
+      <h3 id = "colorPicker-header">Pick a Color, Find a Piece</h3>
+      <div class = "colorPicker-intro">
+        <p>
+          To learn more about the gallery, explore artwork through a color palette of your choice. Use the color selector to choose
+          a color of your liking, then click "get artwork" to find a piece with colors similar to the color you selected. 
+        </p>
+      </div>
+
+      <div class = "wrapper-pickColor">
+        <p id="current-color"></p>
+        <input id="picker" type="color" value="#0000FF" />
+        <button class="button" id="check">Find Artwork</button>
+        <div id="img-container" ></div>
+        <div id="primary-color" >
+          <span id='pchex'></span>
+        </div>
+        <div id="palette" ></div>
+        <div class="info">
+          <p>
+            <span class="bold-title" id='title'></span>
+            <span class="thin-font" id='year-created'></span>
+          </p>
+          <p>
+            <span class="bold-title" id="artist-info"></span>
+            <span class="thin-font"  id='birth-year'></span>
+          </p>
+         
+          <p id='medium'></p>
+         
+          <p id='other-info'></p>
+
+          <p>
+            <a id="artwor-link" target="_blank" href="">Visit Museum website</a>
+          </p>
+        </div>
+        <!--<div class = "title">
+          <span class="bold-title" id='title'></span>
+          <span class="thin-font" id='year-created'></span>
+        </div>-->
+      </div>
+
+      <!--<span>
         <span>Pick a color: </span>
         <input id="picker" type="color" value="#0000FF" />
-        
-      </span>
-      <button class="button" id="check">Get Artwork</button>
-      <p id="current-color"></p>
+        <span class="container" id="current-color"></span>
+      </span>-->
+      
+      
+      <!--<p id="current-color"></p>-->
       <div class="row">
           <div class="column column-40">
 
-            <div id="img-container" ></div>
 
-            <div class="info">
+            <!--<div class="info">
               <p>
                 <span class="bold-title" id="artist-info"></span>
                 <span class="thin-font"  id='birth-year'></span>
@@ -461,26 +497,16 @@
               <p>
                 <a id="artwor-link" target="_blank" href="">Visit Museum website</a>
               </p>
-            </div>
+            </div>-->
           </div>
           <div class="column column-40">
-            <div id="primary-color" >
+            <!--<div id="primary-color" >
               <span id='pchex'></span>
-            </div>
-            <div id="palette" ></div>
+            </div>-->
+            <!--<div id="palette" ></div>-->
           </div>
-        
-
-      
-        
-   
-    
       </div>
     </div>
   </section>
 
-  <!--SECTION: Artist Quiz
-    <section id = "quiz">
-        <h2>Test Your Knowledge</h2>
-    </section> -->
 </body>

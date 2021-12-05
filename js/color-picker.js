@@ -34,8 +34,8 @@ const img = d3
 
 img
 .append("svg:image")
-.attr("x", 30)
-.attr("y", 30)
+.attr("x", 40)
+.attr("y", 40)
 .attr("class", "artwork-img")
 .attr("preserveAspectRatio", "none");
 
@@ -50,12 +50,12 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   const picker = document.querySelector("#picker");
   const btn = document.querySelector("#check");
 
-  document.getElementById('current-color').innerHTML="Current color:  "+picker.value
+  document.getElementById('current-color').innerHTML="Selected Color: " + picker.value
   var init_color = finder.findClosestColor(picker.value);
 
   fetchArtwork(data,init_color)
   picker.addEventListener('change',(event)=>{
-    document.getElementById('current-color').innerHTML="Current color:  "+picker.value
+    document.getElementById('current-color').innerHTML="Selected Color: " + picker.value
   })
   btn.addEventListener("click", (event) => {
     //find the exact value
@@ -92,7 +92,7 @@ medium=target.medium==null?"unknown medium":target.medium
 info=target.creditLine==null?"":target.creditLine
 document.getElementById("artist-info").innerHTML=artist
 document.getElementById("birth-year").innerHTML=birth
-document.getElementById("title").innerHTML=target.title
+document.getElementById("title").innerHTML="Title: " + target.title
 document.getElementById("year-created").innerHTML=year
 document.getElementById("medium").innerHTML=medium
 document.getElementById("other-info").innerHTML=info

@@ -1,6 +1,6 @@
 const margin = {top:50, left:75, right:40, bottom:60};
-const width = 750 - margin.left - margin.right;
-const height = 400 - margin.top - margin.bottom;
+const width = 770 - margin.left - margin.right;
+const height = 450 - margin.top - margin.bottom;
 
 // Create an SVG element
 const svg = d3.selectAll(".chart").append("svg")
@@ -64,7 +64,7 @@ const labelY = svg.append('text')
 const labelX = svg.append('text')
     .attr("class", "x-labelArea")
     .attr('x', 350)
-    .attr('y', 335)
+    .attr('y', 385)
     .attr('text-anchor', 'middle')
     .attr('alignment-baseline', 'middle')
     //.attr('font-size', 14)

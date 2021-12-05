@@ -10,9 +10,9 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
   var num_per_row = Math.ceil(Math.sqrt(data.length));
   var num_per_col = Math.ceil(Math.sqrt(data.length));
 
-  var margin = { top: 20, right: 20, bottom: 20, left: 20 },
-    width = 1400 - margin.left - margin.right,
-    height = 1400 - margin.top - margin.bottom;
+  var margin = { top: 20, right: 40, bottom: 20, left: 35 },
+    width = 1300 - margin.left - margin.right,
+    height = 1200 - margin.top - margin.bottom;
 
   var rect_width = width / num_per_row;
   var rect_height = height / num_per_col;
@@ -69,11 +69,11 @@ d3.json("data/artwork_color.json", d3.autoType).then((data) => {
             + "<br>" +
             "Primary Color: "+ '<span class="smallbox" style="color:'+d.color+'">&#9679;</span>'+
             d.color+
-            "<div>" +
+            "<br></br><div>" +
             "<img src=" +
             d.thumbnailUrl +
-            " + width:300px >" +
-            "</div>"
+            " + width:300px" + ' class = "centered-image">' +
+            "<br></br></div>"
         );
 
         d3.select(this)
