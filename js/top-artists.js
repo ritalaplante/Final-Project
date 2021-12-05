@@ -3,7 +3,7 @@ var countObj = {};
 d3.csv('data/top10counts.csv').then(data => {
 
     const margin = {top:15, right:25, bottom:15, left:120},
-    width = (400 - margin.left - margin.right),
+    width = (450 - margin.left - margin.right),
     height = (150 - margin.top - margin.bottom);
 
     let artists = ['Frink, Dame Elisabeth', 'Hepworth, Dame Barbara','Duncombe, Susanna','Arbus, Diane','Rigby, Elizabeth','Lim, Kim','Wharncliffe, Lady','Rego, Paula','Horn, Rebecca','Almeida, Helena']
@@ -77,11 +77,40 @@ d3.csv('data/top10counts.csv').then(data => {
                     .style("top",pos[1]-25+"px")
                     .style("display", "inline-block")
                     .html("Medium: "+(d.medium_normalized)+"<br>"+"Count: "+(d.count));
-                console.log("working")
+                    var bar = d3.select(this)
+                    var height = bar.attr('height')
+            
+                    var scale = 1.03;
+            
+                    //var newWidth = width* scale;
+                    var newHeight = height*scale;
+            
+                    var shift = (newHeight - height)/2
+            
+                    bar.transition()
+                    .style('transform','scale('+scale+')')
+            
+            
+                    d3.selectAll('.bar')
+                        .filter((d,i)=> i < index)
+                        .transition()
+                        .style('transform','translateX(-'+shift+'px)')
+            
+                    d3.selectAll('.bar')
+                        .filter((d,i)=> i > index)
+                        .transition()
+                        .style('transform','translateX('+shift+'px)')
+                    console.log("working")
                 })
             .on("mouseleave", function (d) {
                 d3.select("#top-tooltip").style("display", "none");
-                });
+                d3.select(this).transition().style('transform','scale(1)')
+                d3.selectAll('.bar')
+                .filter(d=>d.letter !== data.letter)
+                transition()
+                .style('transform','translateX(0)')
+                })
+    
 
                 
             //.attr("height", y.bandwidth()/2);
@@ -91,11 +120,38 @@ d3.csv('data/top10counts.csv').then(data => {
             .tickSize(0)
 
         svg.append("g")
-            .attr("class", "y axis")
+            .attr("class", "y-axis")
             .call(yAxis)
             .call(g => g.select(".domain").remove())
 
-
+        function mouseover(data,index){
+            var bar = d3.select(this)
+            var width = bar.attr('width')
+            var height = bar.attr('height')
+            
+            var scale = 1.5;
+            
+            var newWidth = width* scale;
+            var newHeight = height*scale;
+            
+            var shift = (newWidth - width)/2
+            
+            bar.transition()
+                .style('transform','scale('+scale+')')
+            
+            
+             d3.selectAll('.bar')
+                .filter((d,i)=> i < index)
+                .transition()
+                .style('transform','translateX(-'+shift+'px)')
+            
+            d3.selectAll('.bar')
+                .filter((d,i)=> i > index)
+                .transition()
+                .style('transform','translateX('+shift+'px)')
+            
+            
+            }
 
     
     })

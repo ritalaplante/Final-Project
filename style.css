@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Gudea&display=swap");
 
+/* Body styling */
 body {
   font-family: "Gudea", sans-serif;
-  font-size: 10px;
+  font-size: 20px;
   margin: 0;
   text-anchor: end;
 }
 
+/* HOME PAGE AND HEADER */
 #subtitle {
   /* padding-left: 10px; */
   margin-top: 0;
@@ -50,6 +52,7 @@ body {
   /* position: relative; */
 }
 
+/* HEADER STYLINGS */
 h1 {
   font-size: 40pt;
   width: 50vw;
@@ -63,12 +66,20 @@ h2 {
   font-size: 30pt;
   text-align: center;
   margin-bottom: 0;
-  padding-bottom: 0;
-  padding-top: 50px;
+  padding-bottom: 20;
   color: #0d1215;
   font-weight: bold;
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #0d1215;
+  font-weight: bold;
+}
+
+/* STYLINGS FOR NAVIGATION BAR */
 .navigation {
   background-color: #e2e1dd;
 }
@@ -101,17 +112,608 @@ h2 {
   color: #0d1215;
 }
 
-/*.row{
-    padding-top: 50px;
-    padding-right: 80px;
-    padding-bottom: 50px;
-    padding-left: 80px;
-}*/
+/* HIGHLIGHTS PAGE */
 
+.highlights-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 75px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bar Chart */
+
+.wrapper-barchart {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 5px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 335px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.y-axis { font: 11px "Gudea", sans-serif; }
+.x-axis { font: 18px "Gudea", sans-serif; stroke-width: 1.5; }
+.bar-labels { font: 18px "Gudea", sans-serif; }
+
+.barchart-display {
+  grid-column: col-start / span 8;
+}
+.barchart-description {
+  grid-column: col-start 9 / -1;
+}
+
+/* Area chart */
+
+.wrapper-areachart {
+  display: grid;
+  grid-template-columns: repeat(7, [col-start] 1fr);
+  gap: 40px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.areachart-display {
+  grid-column: col-start 7 / span -1;
+}
+.areachart-description {
+  grid-column: col-start 1 / span 5;
+}
+
+#areachart-title {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 30;
+  color: #0d1215;
+  font-weight: bold;
+}
+
+select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid #b7094c;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.0em;
+  padding: 0.25em 3.0em 0.25em 0.5em;
+
+  /* reset */
+
+  /*margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.groupBy {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(0.5em + 2px),
+    calc(100% - 15px) calc(0.5em + 2px),
+    calc(100% - 2.5em) 0.25em;
+  background-size:
+    5.0px 5.0px,
+    5.0px 5.0px,
+    1px 1.1em;
+  background-repeat: no-repeat;
+}
+
+select.groupBy:focus {
+  background-image:
+    linear-gradient(45deg, #b7094c 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, #b7094c 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 15px) 0.5em,
+    calc(100% - 20px) 0.5em,
+    calc(100% - 2.5em) 0.25em;
+  background-size:
+    5.0px 5.0px,
+    5.0px 5.0px,
+    1px 1.1em;
+  background-repeat: no-repeat;
+  border-color: #b7094c;
+  outline: 0;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+.y-labelArea { font: 20px "Gudea", sans-serif; font-weight: bold; }
+.x-labelArea { font: 20px "Gudea", sans-serif; font-weight: bold; }
+.x-axisArea { font: 18px "Gudea", sans-serif; stroke-width: 1.5; }
+.y-axisArea { font: 18px "Gudea", sans-serif; stroke-width: 1.5;}
+
+/* TOP 10 ARTISTS STYLINGS */
+
+.wrapper-artist {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 5px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artists-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artist-bio1 {
+  grid-column: col-start / span 4;
+}
+.artist-bio2 {
+  grid-column: col-start 8 / span 4;
+}
+
+.viz0 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz1 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz2 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz3 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz4 {
+  grid-column: col-start 3 / span 4 ;
+}
+.viz5 {
+  grid-column: col-start 8 / -1;
+}
+.viz6 {
+  grid-column: col-start 8 / -1;
+}
+.viz7{
+  grid-column: col-start 8 / -1;
+}
+.viz8{
+  grid-column: col-start 8 / -1;
+}
+.viz9{
+  grid-column: col-start 8 / -1;
+}
+
+#artist{
+  font-size: 15;
+}
+
+#top-tooltip {
+  position: absolute;
+  display: none;
+  width: auto;
+  height: auto;
+  background: none repeat scroll 0 0 whitesmoke;
+  border: #e9ecef 1px solid;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: -3px 3px 15px #888888;
+  color: black;
+  font: 12px "Gudea", sans-serif;
+  padding: 5px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.image-overlay {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.25s;
+  z-index: 1;
+}
+
+.image-overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image-overlay:hover{
+  opacity: 1;
+
+}
+
+.image-overlay:hover > * {
+  transform: translateY(0);
+}
+
+.artist-image {
+  position: relative;
+}
+
+#frink {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #f72585;
+  /*-webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  display: block;*/
+  width: 100%;
+ /* or whatever */
+}
+.frink-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #f72585;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#hepworth {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #7209b7;
+  width: 100%; /* or whatever */
+}
+.hepworth-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #7209b7;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#duncombe {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #4cc9f0;
+  width: 100%; /* or whatever */
+}
+.duncombe-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #4cc9f0;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#arbus {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #ffb703;
+  width: 100%; /* or whatever */
+}
+.arbus-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #ffb703;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#rigby {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #38b000;
+  width: 100%; /* or whatever */
+}
+.rigby-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #38b000;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#lim {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #ff7900;
+  width: 100%; /* or whatever */
+}
+.lim-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #ff7900;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#wharncliffe {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #b7094c;
+  width: 100%; /* or whatever */
+}
+.wharncliffe-description{
+  font-size: 12;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #b7094c;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#rego {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #358f80;
+  width: 100%; /* or whatever */
+}
+.rego-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #358f80;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#horn {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #2d00f7;
+  width: 100%; /* or whatever */
+}
+.horn-description{
+  font-size: 14;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #2d00f7;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+#almeida {
+  margin-bottom: 4px;
+  border-radius: 200px;
+  box-sizing: border-box;
+  /*background-color: #DDD;*/
+  border: 2px solid #9d8189;
+  width: 100%; /* or whatever */
+}
+.almeida-description{
+  font-size: 12;
+  /*margin-left: 10;*/
+  text-align: center;
+  color: #9d8189;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+}
+
+/* COLLAGE STYLINGS */
+
+.collage-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 145px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper-collage{
+  box-sizing: border-box;
+  width: 1350px;
+  /*height: 115px;*/
+  margin-left: auto;
+  margin-right: auto;
+  border: 30px #d4ac1a; 
+  /*border-style: solid;*/
+  background: #eee;
+  /*border-top-color: #d4ac1a;
+  border-bottom-color: #d4ac1a;
+  border-left-color: #e9c649;
+  border-right-color: #e9c649;*/
+  border-style: groove; 
+}
+
+#artwork-tooltip {
+  position: absolute;
+  display: none;
+  /* opacity: 0; */
+  z-index: 999;
+
+  color: black;
+  /*width: 300px;*/
+  width: auto;
+  height: auto;
+  /*border-radius: 5px;*/
+  /*background-color: whitesmoke;
+  border: wheat 1px solid;*/
+  background: none repeat scroll 0 0 whitesmoke;
+  border: #e9ecef 1px solid;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: -3px 3px 15px #888888;
+  color: black;
+  font: 12px "Gudea", sans-serif;
+  padding: 10px;
+  text-align: left;
+}
+
+.centered-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*width: 50%;*/
+}
+
+/* COLOR PICKER */
+#colorPicker-header {
+  text-align: center;
+  margin-bottom: 0;
+  padding-top: 20;
+  padding-bottom: 15;
+  color: #0d1215;
+  font-weight: bold;
+}
+
+.colorPicker-intro{
+  box-sizing: border-box;
+  width: 1200px;
+  height: 75px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#picker{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+#picker::-webkit-color-swatch-wrapper {
+  padding: 0; 
+}
+#picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.wrapper-pickColor {
+  display: grid;
+  grid-template-columns: repeat(15, [col-start] 1fr);
+  gap: 2px;
+
+  box-sizing: border-box;
+  width: 1200px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+#picker {
+  grid-column: col-start  / span 2;
+  grid-row: 2;
+}
+#current-color {
+  grid-column: col-start  / span 3;
+  font-family: "Gudea", sans-serif;
+  font-size: 20px;
+}
+
+.button{
+  grid-column: col-start 2 / span 2;
+  grid-row: 2;
+  height: 40px;
+  width: 100px;
+  color: #6c757d;
+  border: 2px solid #343a40;
+  border-radius: 3px;
+  /*padding: 18px 36px;*/
+  /*display: inline-block;*/
+  font-family: "Gudea", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #6c757d;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  
+}
+
+#img-container {
+  grid-column: col-start 1 / span 4;
+  grid-row: 3 / 7;
+  
+}
+
+#primary-color {
+  grid-column: col-start 5 / span 2;
+  grid-row: 1 / 5;
+}
+
+#palette {
+  grid-column: col-start 5 / span 4;
+  grid-row: 5 / 9;
+}
+
+.info {
+  grid-column: col-start 10 / -1;
+  grid-row: 1 / 4;
+  font-family: "Gudea", sans-serif;
+  font-size: 18px;
+}
+
+.button:hover {
+  box-shadow: inset 0 0 0 50px #343a40;
+}
+
+/* row and columnn styling */
 .column {
   float: left;
   width: 50%;
-  padding-top: 70px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+section {
+  justify-content: center;
+  align-content: center;
+}
+
+.container {
+  padding-top: 30px;
+  padding-right: 100px;
+  padding-bottom: 30px;
+  padding-left: 100px;
 }
 
 .center {
@@ -133,48 +735,37 @@ h2 {
   font-size: 20px;
 }
 
-#artwork-tooltip {
-  position: absolute;
-  display: none;
-  /* opacity: 0; */
-  z-index: 999;
-
-  color: black;
-  width: 300px;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: whitesmoke;
-  border: wheat 1px solid;
-}
 
 #origins {
   width: 500px;
   height: 300px;
 }
 
-#picker {
+/*#picker {
   margin-left: 50;
   width: 100px;
-}
+}*/
 
 #check {
   margin-left: 20px;
 }
 
-.color-picker {
+/*.color-picker {
   margin-left: 30px;
   font-size: 20px;
-}
+}*/
 
 #stats {
   margin: 30px;
   font-size: 20px;
 }
 
-#gallery {
+/*#gallery {
   font-size: 20px;
   margin: 30px;
-}
+}*/
+
+
 
 /*#pie-tooltip{
     position: fixed;
@@ -190,7 +781,7 @@ h2 {
    border: wheat 1px solid;
   }*/
 
-#pie-tooltip {
+/*#pie-tooltip {
   position: absolute;
   display: none;
   width: auto;
@@ -203,49 +794,19 @@ h2 {
   font: 12px sans-serif;
   padding: 5px;
   text-align: center;
-}
-#top-tooltip {
-  position: absolute;
-  display: none;
-  width: auto;
-  height: auto;
-  background: none repeat scroll 0 0 whitesmoke;
-  border: wheat 1px solid;
-  border-radius: 8px 8px 8px 8px;
-  box-shadow: -3px 3px 15px #888888;
-  color: black;
-  font: 12px sans-serif;
-  padding: 5px;
-  text-align: center;
+}*/
+
+.bold-title{
+  font-size: 18px;
+  font-weight: bolder;
+  font-family: "Gudea", sans-serif;
 }
 
-#frink {
-  margin-bottom: 8px; /* or whatever */
+.thin-text{
+  font-size: 14px;
+  font-weight: lighter;
+  font-family: "Gudea", sans-serif;
 }
-#hepworth {
-  margin-bottom: 8px; /* or whatever */
-}
-#duncombe {
-  margin-bottom: 8px; /* or whatever */
-}
-#arbus {
-  margin-bottom: 8px; /* or whatever */
-}
-#rigby {
-  margin-bottom: 8px; /* or whatever */
-}
-#lim {
-  margin-bottom: 8px; /* or whatever */
-}
-#wharncliffe {
-  margin-bottom: 8px; /* or whatever */
-}
-#rego {
-  margin-bottom: 8px; /* or whatever */
-}
-#horn {
-  margin-bottom: 8px; /* or whatever */
-}
-#almeida {
-  margin-bottom: 8px; /* or whatever */
-}
+
+
+

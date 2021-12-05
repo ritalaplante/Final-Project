@@ -2,12 +2,12 @@
   <meta charset="utf-8" />
   <title>Final Project</title>
 
-  <link
+  <!--<link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   />
 
-  <!-- <link
+  <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
   />
@@ -19,6 +19,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
   /> -->
+  
   <link rel="stylesheet" href="style.css" />
 
 
@@ -34,6 +35,7 @@
     
 
   <script src="js/pie-chart.js" defer type="module"></script>
+  <script src="js/gender-barChart.js" defer type="module"></script>
   <script src="js/area-chart.js" defer type="module"></script>
   <script src="js/artist-origins.js" defer type="module"></script>
   <script src="js/color-picker.js" defer></script>
@@ -42,7 +44,7 @@
   <script src="js/collage.js" defer type="module"></script>
 </head>
 <body>
-  <!-- <a id="a2" download="file.csv">Download</a> -->
+  
   <div class="header">
     <div class="header-text">
       <h1>
@@ -72,13 +74,66 @@
   <!--SECTION: Highlights and Overview-->
   <section id="highlights">
     <h2>Highlights and Overview</h2>
+    <div class = highlights-intro>
+      <p>
+        This section explores patterns in gender at the TATE. This section aims to explore the prevelance of female artists
+        within the TATE collection and the time periods during which these female artists created the majority of their artwork.
+      </p>
+    </div>
+    <h3>Gender Breakdown at the TATE</h3>
+    <div class = "wrapper-barchart">
+      <div class = "barchart-display">
+        <div id = "bar-chart"></div>
+      </div>
+      <div class = "barchart-description">
+        <p>
+          Like most art collections around the world, a majority of the TATE
+          collection is composed of male artists. The lack of female representation means
+          it's important for us to learn more about these artists. For instance, we can ask 
+          the following questions: 
+          <ul>
+            <li>When did they create their work?</li>
+            <li>What mediums did they use?</li>
+            <li>When did they live and where did they live?</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+    <h3 id = "areachart-title">When did these artists create their work? When was their art aquired by the gallery?</h3>
+    <div class = "wrapper-areachart">
+      <div class = "areachart-description">
+        <p>
+          Most female artists of the TATE collection were not creating art until the 20th century. Simillarly, TATE galleries
+          were not collecting art created by female artists until the 20th century. Women were largely excluded from the art scene for 
+          many centuries, and even today their work often is under-collected. Notice:
+          <ul>
+            <li>
+              Throughout the 18th and 19th centuries there is very little change in art created and collected.
+              Art created by female artists during these periods was very rare.
+            </li>
+          </ul>
+        </p>
+      </div>
+      <div class = "areachart-display">
+        <div class = "drop-down">
+          <select class ="groupBy">
+            <option value="year">Year Created</option>
+            <option value="acquisition">Year of Acquisition</option>
+          </select>
+        </div>
+        <div class="chart"></div>
+      </div>
+    </div>
 
     <!--Pie chart artist genders-->
-    <div class="container">
+    <!--<div class="container">
       <div class="row">
         <div class="column" id="pie-chart">
           <div id="pie-tooltip"></div>
+          <div class = legendColors></div>
+          <div class = "legendTitles"></div>
         </div>
+      </div>
         <div class="column" id="vis-description">
           <p>
             Like most art collections around the world, a majority of the TATE
@@ -116,43 +171,208 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- scatterplot -->
-  <section id="stats">
-      <p>Here is a scatter plot displaying size of the artworks.</p>
-      <p>Each circle represents an artwork, and its color is the primary color of the artwork</p>
-    <div class="scatterplot"></div>
-  </section>
-
-  <section id="artist-origin"></section>
-  <div class="container">
-    <div class="row">
-      <div class="column">
-        <img id="origins" src="images/origins.png" />
-      </div>
-      <div class="column" id="vis-description">
-        <p>
-          The following is a chart that shows where female artists in the
-          collection were born. We intended to make a map; however, we are
-          finding the task much more difficult than we originally intended since
-          not all country names in the dataset are listed in English. Instead,
-          we created a preliminary tree map in Tableau, but would be open to
-          suggestions about how we could use the geographical data in our
-          dataset.
-        </p>
-      </div>
-    </div>
-  </div>
+  </section>-->
 
   <!--SECTION: Top 10 Female Artists-->
   <section id="artists">
     <h2>Meet Popular Artists</h2>
+    <div class = "artists-intro">
+      <p>
+        Explore the 10 most collected artists in the TATE Gallery. Hover over an artist profile to learn more about where the artist's
+        origins and mediums of choice. Click on an artist profile picture to learn more about her on the TATE Gallery website. 
+        Hover over the bars to explore how many pieces in each medium the gallery owns. <br><br>
+        Scrolling through these profiles we see that women of the TATE Gallery create art in a variety of mediums with various materials.
+        We also see their artwork spans across three centuries. Do you recognize a difference in mediumns between time period?
+      </p>
+    </div>
+    <div id="top-tooltip"></div>
+    <div class="wrapper-artist">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/dame-elisabeth-frink-1124">
+            <img id="frink" src="images/frink-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "frink-description">
+                English Sculptor and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Dame Elisabeth Frink</b> (1930-1993)
+        </p>
+      </div>
+      <div id = "viz0"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/kim-lim-1512">
+            <img id="lim" src="images/lim-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "lim-description">
+                Singoporean-British Sculptor and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Kim Lim</b> (1936-1997)
+        </p> 
+      </div>
+      <div id = "viz5"></div>
+    </div>
+    <div class="wrapper-artist">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/dame-barbara-hepworth-1274">
+            <img id="hepworth" src="images/hepworth-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "hepworth-description">
+                English Artist and Sculptor
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Dame Barbara Hepworth</b> (1903-1975)
+        </p>
+      </div>
+      <div id = "viz1"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/lady-wharncliffe-2576">
+            <img id="wharncliffe" src="images/Wharncliffe-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "wharncliffe-description">
+                Irish-Born British Aristocrat Landscape Painter
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Lady Wharncliffe</b> (1776-1853)
+        </p>
+      </div>
+      <div id = "viz6"></div>
+    </div>
+    <div class="wrapper-artist">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/susanna-duncombe-2284">
+            <img id="duncombe" src="images/Duncombe-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "duncombe-description">
+                English Poet and Artist
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Susanna Duncombe</b> (1725-1812)
+        </p>
+      </div>
+      <div id = "viz2"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/paula-rego-1823">
+            <img id="rego" src="images/rego-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "rego-description">
+                Portuguese-Bristish Painter and Printmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Paula Rego</b> (1935- )
+        </p>
+      </div>
+      <div id = "viz7"></div>
+    </div>
+    <div class="wrapper-artist">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/diane-arbus-5271">
+            <img id="arbus" src="images/arbus-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "arbus-description">
+                American Photographer
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <p id = "artist">
+            <b>Diane Arbus</b> (1923-1971)
+          </p>
+        </p>
+      </div>
+      <div id = "viz3"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/rebecca-horn-2269">
+            <img id="horn" src="images/horn-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "horn-description">
+                German Instalation Artist and Filmaker
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Rebecca Horn</b> (1944- )
+        </p>
+      </div>
+      <div id = "viz8"></div>
+    </div>
+    <div class="wrapper-artist">
+      <div class="artist-bio1">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/elizabeth-rigby-2555">
+            <img id="rigby" src="images/rigby-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "rigby-description">
+                British Author, Artist, and Art Critic
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Elizabeth Rigby</b> (1809-1893)
+        </p>
+      </div>
+      <div id = "viz4"></div>
+      <div class="artist-bio2">
+        <div class = "artist-image">
+          <a href="https://www.tate.org.uk/art/artists/helena-almeida-12989">
+            <img id="almeida" src="images/almeida-modified.png" width="100"/>
+            <div class = "image-overlay">
+              <p class = "almeida-description">
+                Portuguese Photographer and Performance Artist
+              </p>
+            </div>
+          </a>
+        </div>
+        <p id = "artist">
+          <b>Helena Almeida</b> (1934-2018)
+        </p>
+      </div>
+      <div id = "viz9"></div>
+    </div>
+
+    <!-- scatterplot 
+  <section id="stats">
+    <p>Here is a scatter plot displaying size of the artworks.</p>
+    <p>Each circle represents an artwork, and its color is the primary color of the artwork</p>
+    <div class="scatterplot"></div>
+  </section> -->
+    
+    <!--
       <div class = "container">
         <div id="top-tooltip"></div>
         <div class="column" id="top5-vis">
             <div id = "viz0">
               <img id="frink" src="images/frink-modified.png" width="100"/>
+              <p>Artist: Dame Elisableth Frink</p>
             </div>
             <div id = "viz1">
               <img id="hepworth" src="images/hepworth-modified.png" width="100"/>
@@ -186,53 +406,107 @@
         </div>
         
       </div>
+    -->
   </section>
 
   <!--SECTION: Gallery/Artwork Overview-->
   <section id="gallery">
     <h2>Explore the Collection</h2>
-    
-    <p>Here is a collage of all artworks in the database</p>
-    <p> Click the images to visit details page</p>
-    <div class="collage">
-        <div id="artwork-tooltip"></div>
+    <div class = "collage-intro">
+      <p>
+        Below is a complete collection of all publicly available artwork from the TATE collection created by female artists.
+        Hover over each image to learn more about the image and its properties. Click on the image to view the artwork on the 
+        TATE gallery webpage. Scrolling through these images reveals just how varied the artwork created by female artists is. 
+        Can you recognize patterns across time periods? What pieces and colors stand out the most? 
+      </p>
     </div>
-  
-    
-
+    <div class = "wrapper-collage">
+      <div class="collage">
+        <div id="artwork-tooltip"></div>
+      </div>
+    </div>
 
     <div class="color-picker">
-      <h2>Explore the artworks by color</h2>
-      <p>
-        Find a color and get the artwork that has the most similar primary color
-        <br> 
-        It also returns the palette of the image
-      </p>
-      <span>
+      <h3 id = "colorPicker-header">Pick a Color, Find a Piece</h3>
+      <div class = "colorPicker-intro">
+        <p>
+          To learn more about the gallery, explore artwork through a color palette of your choice. Use the color selector to choose
+          a color of your liking, then click "get artwork" to find a piece with colors similar to the color you selected. 
+        </p>
+      </div>
+
+      <div class = "wrapper-pickColor">
+        <p id="current-color"></p>
+        <input id="picker" type="color" value="#0000FF" />
+        <button class="button" id="check">Find Artwork</button>
+        <div id="img-container" ></div>
+        <div id="primary-color" >
+          <span id='pchex'></span>
+        </div>
+        <div id="palette" ></div>
+        <div class="info">
+          <p>
+            <span class="bold-title" id='title'></span>
+            <span class="thin-font" id='year-created'></span>
+          </p>
+          <p>
+            <span class="bold-title" id="artist-info"></span>
+            <span class="thin-font"  id='birth-year'></span>
+          </p>
+         
+          <p id='medium'></p>
+         
+          <p id='other-info'></p>
+
+          <p>
+            <a id="artwor-link" target="_blank" href="">Visit Museum website</a>
+          </p>
+        </div>
+        <!--<div class = "title">
+          <span class="bold-title" id='title'></span>
+          <span class="thin-font" id='year-created'></span>
+        </div>-->
+      </div>
+
+      <!--<span>
         <span>Pick a color: </span>
         <input id="picker" type="color" value="#0000FF" />
-      </span>
-      <button class="button" id="check">Get Artwork</button>
+        <span class="container" id="current-color"></span>
+      </span>-->
+      
+      
+      <!--<p id="current-color"></p>-->
       <div class="row">
           <div class="column column-40">
-            <div id="img-container" ></div>
+
+
+            <!--<div class="info">
+              <p>
+                <span class="bold-title" id="artist-info"></span>
+                <span class="thin-font"  id='birth-year'></span>
+              </p>
+              <p>
+                <span class="bold-title" id='title'></span>
+                <span class="thin-font" id='year-created'></span>
+              </p>
+             
+              <p id='medium'></p>
+             
+              <p id='other-info'></p>
+
+              <p>
+                <a id="artwor-link" target="_blank" href="">Visit Museum website</a>
+              </p>
+            </div>-->
           </div>
           <div class="column column-40">
-            <div id="primary-color" ></div>
-            <div id="palette" ></div>
+            <!--<div id="primary-color" >
+              <span id='pchex'></span>
+            </div>-->
+            <!--<div id="palette" ></div>-->
           </div>
-        
-
-      
-        
-   
-    
       </div>
     </div>
   </section>
 
-  <!--SECTION: Artist Quiz
-    <section id = "quiz">
-        <h2>Test Your Knowledge</h2>
-    </section> -->
 </body>
