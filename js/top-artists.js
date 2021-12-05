@@ -8,7 +8,7 @@ d3.csv('data/top10counts.csv').then(data => {
 
     let artists = ['Frink, Dame Elisabeth', 'Hepworth, Dame Barbara','Duncombe, Susanna','Arbus, Diane','Rigby, Elizabeth','Lim, Kim','Wharncliffe, Lady','Rego, Paula','Horn, Rebecca','Almeida, Helena']
     let mediums = []
-    let colors = ['#00b38c','#6e3c6a', '#205836','#482a5c', '#8b582d','#a54e77','#70427e', '#b94242', '#1d7585', '#093a42', '#797a3d', '#c28428', '#55648d', '#313749', '#314948','#4c7460','#98799c','#2c0931','#62946d','#68775f','#5e3e2c' ]
+    let colors = ['#00b38c','#467481', '#205836','#482a5c', '#8b582d','#a54e77','#70427e', '#b94242', '#1d7585', '#093a42', '#797a3d', '#c28428', '#55648d', '#313749', '#314948','#4c7460','#98799c','#2c0931','#62946d','#68775f','#5e3e2c' ]
     //let colors = []
     let medObj = {}
     for (let i = 0; i < data.length; i++) {
@@ -17,14 +17,14 @@ d3.csv('data/top10counts.csv').then(data => {
         }
         //nums.push(aData[i].count)
       };
-    console.log(medObj['Print'])
-    console.log(mediums.length)
+    //console.log(medObj['Print'])
+    //console.log(mediums.length)
     for (let i=0; i < mediums.length; i++){
         medObj[mediums[i]] = colors[i]
         //colors.push("#" + ((1<<24)*Math.random() | 0).toString(16))
     }
     console.log(medObj)
-    console.log(medObj['Print'])
+    console.log(medObj['Etching'])
     artists.forEach(function(artist) {
         let aindex = artists.indexOf(artist)
         console.log("viz"+aindex)
