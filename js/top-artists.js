@@ -40,6 +40,8 @@ d3.csv('data/top10counts.csv').then(data => {
         //console.log(mediums)
         console.log(totalCount)
 
+        
+
         var y = d3.scaleBand()
             .range([height, 0])
             .padding(0.1);
@@ -53,23 +55,33 @@ d3.csv('data/top10counts.csv').then(data => {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
-        x.domain([0, d3.max(aData, function(d){ return d.count; })])
+        x.domain([0,73]) 
+        //x.domain([0, d3.max(aData, function(d){ return d.count; })])
         y.domain(aData.map(function(d) { return d.medium_normalized; }));
-        console.log(y)
+        
+        if(aData.length==1){
+            y.range([height/2, 0])
+          
+        }
 
         svg.selectAll(".bar")
             .data(aData)
             .enter().append("rect")
             .attr("class", "bar")
-            .attr("width", function(d) {return (x(d.count)/8); } )
+            .attr("width", function(d) {return (x(d.count)); } )
             .attr("y", function(d) { return y(d.medium_normalized); })
             .style("fill", function(d, i) {
                 return medObj[d.medium_normalized]
               })
             .attr("rx", 3)
             .attr("ry", 3)
-            .attr("height", height / aData.length - 5)
-            .on("mouseover", function(event, d){
+            .attr("height", function(d){
+                if(aData.length==1)
+                    return (height / aData.length)/2 - 5
+                return height / aData.length - 5
+            }
+            )
+            .on("mouseover", function(event, d,index){
                 const pos = d3.pointer(event, window);
                 console.log(d)
                 d3.select('#top-tooltip')
@@ -107,7 +119,7 @@ d3.csv('data/top10counts.csv').then(data => {
                 d3.select(this).transition().style('transform','scale(1)')
                 d3.selectAll('.bar')
                 .filter(d=>d.letter !== data.letter)
-                transition()
+                .transition()
                 .style('transform','translateX(0)')
                 })
     
@@ -124,34 +136,34 @@ d3.csv('data/top10counts.csv').then(data => {
             .call(yAxis)
             .call(g => g.select(".domain").remove())
 
-        function mouseover(data,index){
-            var bar = d3.select(this)
-            var width = bar.attr('width')
-            var height = bar.attr('height')
+        // function mouseover(data,index){
+        //     var bar = d3.select(this)
+        //     var width = bar.attr('width')
+        //     var height = bar.attr('height')
             
-            var scale = 1.5;
+        //     var scale = 1.5;
             
-            var newWidth = width* scale;
-            var newHeight = height*scale;
+        //     var newWidth = width* scale;
+        //     var newHeight = height*scale;
             
-            var shift = (newWidth - width)/2
+        //     var shift = (newWidth - width)/2
             
-            bar.transition()
-                .style('transform','scale('+scale+')')
-            
-            
-             d3.selectAll('.bar')
-                .filter((d,i)=> i < index)
-                .transition()
-                .style('transform','translateX(-'+shift+'px)')
-            
-            d3.selectAll('.bar')
-                .filter((d,i)=> i > index)
-                .transition()
-                .style('transform','translateX('+shift+'px)')
+        //     bar.transition()
+        //         .style('transform','scale('+scale+')')
             
             
-            }
+        //      d3.selectAll('.bar')
+        //         .filter((d,i)=> i < index)
+        //         .transition()
+        //         .style('transform','translateX(-'+shift+'px)')
+            
+        //     d3.selectAll('.bar')
+        //         .filter((d,i)=> i > index)
+        //         .transition()
+        //         .style('transform','translateX('+shift+'px)')
+            
+            
+        //     }
 
     
     })
