@@ -7,7 +7,7 @@ let data = {
 };
 
 const color = d3.scaleOrdinal()
-    .range(['#003049', '#c1121f', '#ede0d4']); 
+    .range(['#62b2cd', '#bd658d', '#aca19a']); 
 
 let margin = {top: 30, right: 20, bottom: 30, left: 40};
 let svgWidth = 800, svgHeight = 310;
@@ -64,8 +64,8 @@ bars.append('rect')
     .attr("ry", 5)
     .attr("stroke", function (d){ return color(d); })
     .attr('stroke-width', '3.5')
-    .attr("fill", "#e5e5e5")
-    .on("mouseover", function(event, d){
+    .attr("fill", "#e2e2e0")
+    .on("mouseover", function(event, d,index){
         var bar = d3.select(this)
         var width = bar.attr('width')
         var height = bar.attr('height')

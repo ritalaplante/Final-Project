@@ -779,6 +779,16 @@ section {
 
 #check {
   margin-left: 20px;
+  
+  border: 1px solid #e2e2e0;
+  border-radius: 8px;
+  
+
+}
+
+#check:active {
+  transform: scale(0.98);
+  
 }
 
 /*.color-picker {
