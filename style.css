@@ -869,6 +869,9 @@ section {
   padding: 10px;
   text-align: left;
 
+  min-width: 75px; max-width: 275px;
+  line-height: 1.5;
+
 }
 
 .myfooter{
@@ -928,6 +931,6 @@ text-decoration: none;
 
 }
 
-link:link:active, link:visited:active {
-color: grey;
+#link:link:active, #link:visited:active {
+color: #6b705c;
 }

@@ -97,7 +97,7 @@ artist=names[1]+" "+names[0]
 birth=target.yearOfBirth==null?"":"(b."+target.yearOfBirth+")"
 year=target.year==null?"":target.year
 medium=target.medium==null?"unknown medium":target.medium
-//info=target.creditLine==null?"":target.creditLine
+info=target.creditLine==null?"":target.creditLine
 //document.getElementById("artist-info").innerHTML=artist
 //document.getElementById("birth-year").innerHTML=birth
 //document.getElementById("title").innerHTML="Title: " + target.title
@@ -126,7 +126,8 @@ img
       .style("left", pos[0]+30+"px")
       .style("top",pos[1]+20+"px")
       .style("display", "inline-block")
-      .html("<b>Title: </b>"+target.title+" (" + year + ")<br><b>Artist: </b>" + artist + " " +birth+ "<br><b>Medium: </b>" + medium)    
+      //.html("<b>"+target.title+"</b> (" + year + ")<br><b>" + artist + "</b> " +birth+ "<br><b>Medium: </b>" + medium) 
+      .html("<b>" + artist + "</b> " + birth + "<br><b>" + target.title + "</b> (" + year + ")<br>" + medium + "<br><br>" + info)   
       console.log("over")
     d3.select(this)
       .style("opacity", .75)

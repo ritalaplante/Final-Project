@@ -1,0 +1,55 @@
+<head>
+    <meta charset="utf-8" />
+    <title>About Page</title>
+    <link rel="stylesheet" href="aboutStyle.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="header-text">
+          <h1>
+            About Refusing to HesiTATE
+          </h1>
+          <p id="description">
+            Out motivation with this project was to highligh female artists in the TATE collection because they are so under-represented 
+            in the gallery. Specifically, we wanted to use our webpage to highlight lesser-known artists and to put artists' artwork on full
+            display. The point of this site is not only to display trends within the collection, but it is also to put the incorporate
+            the artwork into the visualization. We used open-source data about the TATE collection's artwork and artists to achieve this 
+            goal.
+          </p>
+        </div>
+      </div>
+    
+      <div class="navigation">
+        <ul id="page-items">
+          <li><a href="#processing">Data Processing</a></li>
+          <li><a href="#design">Design Rationale and Processes</a></li>
+          <li><a href="#showcase">Showcase Video</a></li>
+          <!--<li><a href="#quiz">Test Your Knowledge</a></li>-->
+        </ul>
+      </div>
+
+      <section id = "processing">
+          <h2>Data Processing</h2>
+          <div class = "processing-desc">
+              Our primary dataset was a combination of two datasets was released by the TATE gallery in London. The first of the two 
+              datasets contained artists information such as an unique artist ID, artist name, artist gender, artist place of birth, 
+              artist place of death, artist year of birth and artist year of death. The second dataset contained information about different 
+              artworks in the TATE collection. This dataset included field such as artist, artist ID, artwork title, date of creation, 
+              date of acquistion, and links to the artwork on the TATE gallery website. <br><br>
+              To create one cohesive dataset we joined these two datasets together by artist ID and then filtered them to create a dataset 
+              containing only artwork created by female artists. From here we had to perform some data cleaning to create concise 
+              and clear visualizations. The primary task we performed was normalizing medium names for the "Meet Popular Artists" visualization. 
+              We found that many of the same mediums were listed under different names, so we had to identify these duplicates 
+              and normalize the medium names accordingly. <br><br> 
+              Addiotionally, the visualizations focussed on image color required a fair bit of data cleaning. We first extracted 
+              the colors of each artwork from the thumbnail url provided in the dataset. We then used a js library called Color Thief which 
+              grabs the primary color and the palette of 10 colors in each image. We then used the attributes collected by Color Thief in our
+              visualizations. In order to save the website loading time, we used the combined dataset instead of performing color extraction 
+              every time we run the program. <br><br>
+              Information about Color Thief can be found <a href = https://lokeshdhakar.com/projects/color-thief/#api> here</a>.
+          </div>
+      </section>
+      <section id = "design">
+          <h2>Design Rationale and Processes</h2>
+      </section>
+</body>
