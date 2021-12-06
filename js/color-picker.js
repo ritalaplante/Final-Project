@@ -122,6 +122,9 @@ img
     //console.log(d)
     const pos = d3.pointer(event, window);
     console.log(target)
+    //var birth1 =target.yearOfBirth==null?"":"(b."+target.yearOfBirth+")"
+    //var medium1 =target.medium==null?"unknown medium":target.medium
+    //console.log(birth1)
     d3.select('#img-tooltip')
       .style("left", pos[0]+30+"px")
       .style("top",pos[1]+20+"px")
