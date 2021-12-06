@@ -40,7 +40,7 @@
               containing only artwork created by female artists. From here we had to perform some data cleaning to create concise 
               and clear visualizations. The primary task we performed was normalizing medium names for the "Meet Popular Artists" visualization. 
               We found that many of the same mediums were listed under different names, so we had to identify these duplicates 
-              and normalize the medium names accordingly. <br><br> 
+              and normalize the medium names accordingly. We used SQL to perform these analyses. <br><br> 
               Addiotionally, the visualizations focussed on image color required a fair bit of data cleaning. We first extracted 
               the colors of each artwork from the thumbnail url provided in the dataset. We then used a js library called Color Thief which 
               grabs the primary color and the palette of 10 colors in each image. We then used the attributes collected by Color Thief in our
@@ -51,5 +51,65 @@
       </section>
       <section id = "design">
           <h2>Design Rationale and Processes</h2>
+          <div class = "design-desc">
+              <b>Highlights:</b><br><br>
+              We wanted to use the highlights section as a place to explain the rationale behind our project in the most simple way possible.
+              First we wanted to adress the artist gender breakdown in the collection. To do this we created a simple bar chart because we
+              believed that encoding artist count using the bar height was the best way to help usere see disparities between genders. <br><br>
+              We used an area chart to show when female artists were creating work and when their work was being collected because we thought 
+              this visualization helped us best show patterns over time. Looking at this chart, users can see how women were excluded from the 
+              art scene for many centuries. <br><br>
+              <b>Meet Popular Artists</b><br><br>
+              We decided to focus our website on the female artists, so we thought it would be interesting to display the top ten female 
+              artists based on their number of artworks in the gallery. The visualization breaks each down by medium, in order to show which 
+              artists used which mediums.<br><br>
+              For each artist we included an image, brief description of their history, and a horizontal bar 
+              chart encoding the number of artworks with each medium. By hovering over the image of the artist it displays the origin of the 
+              artist along with the type of artwork they specialized in.<br><br>
+              For the entire collection of bar charts, each medium corresponds to a color to make the entire section cohesive. In addition 
+              the height of each bar encodes the number of mediums used. For example the more mediums an artist uses, the more bars are 
+              included in the visualization and the heights are smaller. This creates a visual to see that if the heights of the bars are 
+              larger, the less mediums the artist used.<br><br>
+              This visualization allowed us to learn more about which artists were the most influential in different time periods and also 
+              see if there were any correlations between the mediums used and the time period of each artist. <br><br>
+              <b>Explore the Collection:</b><br><br>
+              We want the users to feel like they are walking through the museum, so we decided to embed the artwork images into the website. 
+              Since the entire dataset contains only around 1700 images, it is possible to create a large collage of all the artwork. <br><br>
+              The artworks are sorted from newest to oldest, it makes the audiences feel like they are walking back in time in their journey of exploration. <br><br>
+              We also added tooltips that pop up when hovering above a thumbnail image, they contain basic information and an enlarged picture 
+              of the artwork. If the user wants to see more details, he or she can click the image to jump to the original museum webpage. <br><br>
+              <b>Pick a Color, Find a Piece:</b><br><br>
+              Sometimes the audiences can get lost looking at the huge collage of images, therefore we provided a way for them to explore 
+              an individual image. We wanted to create a search function; however, we recognized that many of the users might not know 
+              enough about the artwork or artists, to run a specified search. To solve this problem, we decided to create a function that 
+              would allow users to explore the museum by their favorite colors, hopefully allowing them to uncover new favorite artists 
+              throughout the process. 
+              The user can pick a color of choice and be presented with an image containing colors most similar to the selected color. We found a 
+              JavaScript file online that makes it possible to calculate color difference and find a color that is the most similar to the input color in an 
+              array of colors. 
+              Additionally, the program returns the palette of 10 colors and their hex codes. This palette not only provides atheistic 
+              effects, but also helps the users that are seeking inspiration. We understand that many artists like browsing artworks and 
+              studying their color palettes, so we think the palette functionality will be especially useful to these people.<br><br>
+              We appreciate <a href = https://github.com/sunpietro/color-finder>sunpietro</a> for creating this helpful file that makes the section possible
+          </div>
       </section>
+      <section id = "showcase">
+          <h2>Final Showcase Video</h2>
+          <div class = "showcase-vid">
+              <div class = "center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/73Wo3NjdFRw" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+          </div>
+      </section>
+      <footer>
+        <div class="citeNote">
+          <p style="color:rgb(55, 52, 52);">View Source Code <a id = "link" href="https://github.com/ritalaplante/Final-Project">here</a>
+        </div>
+        <div class="authors">
+            <p style="color:rgb(55, 52, 52);">Authors: Rita LaPlante, Kelly Burke, Amy Zhao
+          </div>
+        <div class="myfooter">
+          <button id="views" onclick="scrollWin()">Back to top</button>
+        </div>
+      </footer>
 </body>
